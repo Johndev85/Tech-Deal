@@ -1,2 +1,2 @@
 # Chea-Platzi
-Proyect from C4 on Plaztzi Master program
+Proyect from C4 on Platzi Master program
