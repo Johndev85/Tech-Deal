@@ -1,4 +1,5 @@
 @import "../../styles/variables";
+@import "../../styles/mixins";
 
 .container {
     width: auto;
@@ -12,6 +13,9 @@
         border-radius: 40px;
         border: none;
         box-shadow: 0 0 3px $color-second;
+        &:focus {
+            box-shadow: 0 0 5px $color-second;
+        }
     }
     &__searchIcon {
         position: relative;
@@ -30,5 +34,8 @@
         font-weight: 700;
         color: $color-main;
         background-color: $color-btn;
+        &:hover {
+            @include hover-btn;
+        }
     }
 }
