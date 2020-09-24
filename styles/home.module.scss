@@ -17,11 +17,27 @@
     }
 }
 
+.results {
+    width: 100vw;
+    height: auto;
+    display: grid;
+    grid-template: 1fr / repeat(6, 1fr);
+    padding: 20px 80px;
+    background-color: $color-bg;
+    box-shadow: 0 0 2px $color-main;
+}
+
 /* ====================================================================================================================
  * RESPONSIVE
  * ====================================================================================================================*/
 
 /*-------------  Mobile -------------------*/
+
+@media screen and (max-width: 768px) {
+    .results {
+        grid-template: 1fr / repeat(3, 1fr);
+    }
+}
 
 @media screen and (max-width: 414px) {
     .searchContainer {
@@ -30,5 +46,9 @@
             font-size: 2.2rem;
             text-align: center;
         }
+    }
+    .results {
+        grid-template: 1fr / 1fr 1fr;
+        padding: 8px;
     }
 }

@@ -1,0 +1,82 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.card {
+    width: 180px;
+    height: 280px;
+    padding: 10px;
+    margin: 10px;
+    background-color: #fff;
+    border-radius: 15px;
+    place-self: center;
+    border: none;
+    box-shadow: 0 2px 5px $color-main;
+    transition-duration: 100ms;
+    &:hover {
+        transform: translateY(-3px);
+    }
+    &__img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            width: 80px;
+        }
+        &__icon {
+            position: relative;
+            z-index: 5;
+            top: -40px;
+            left: 20px;
+            font-size: 1.8rem;
+            color: $color-bg;
+            &:hover {
+                @include hover-fav;
+            }
+        }
+    }
+    &__details {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 12px;
+        h2 {
+            font-size: 1.2rem;
+        }
+    }
+    &__button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        a {
+            width: 100px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            border-radius: 20px;
+            color: $color-main;
+            font-size: 1.2rem;
+            font-weight: 700;
+            background-color: $color-btn;
+            &:hover {
+                @include hover-btn;
+            }
+        }
+    }
+}
+
+/* ====================================================================================================================
+ * RESPONSIVE
+ * ====================================================================================================================*/
+
+/*-------------  Mobile -------------------*/
+
+@media screen and (max-width: 414px) {
+    .card {
+        width: 160px;
+        margin: 5px;
+    }
+}
