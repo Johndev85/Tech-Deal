@@ -1,19 +1,19 @@
 @import "../../styles/variables";
 
 .footer {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template: 80% 20% / 1fr;
     &__top {
         width: 100vw;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        display: grid;
+        grid-template: 1fr / repeat(3, 1fr);
         padding: 20px 0;
         box-shadow: 0 0 1px $color-second;
         color: $color-main;
         &__general {
             width: 170px;
             height: 170px;
+            place-self: center;
             padding: 15px;
             margin: 0 40px;
             border: none;
@@ -70,5 +70,38 @@
         font-weight: 700;
         background-color: $color-second;
         color: #ffffff;
+    }
+}
+
+/* ====================================================================================================================
+ * RESPONSIVE
+ * ====================================================================================================================*/
+
+/*-------------  Mobile -------------------*/
+
+@media screen and (max-width: 414px) {
+    .footer {
+        font-size: 1rem;
+        &__top {
+            grid-template: 1fr 1fr 50% 50% / 1fr;
+            &__general {
+                width: 80%;
+                margin: 20px 40px;
+            }
+            &__social {
+                width: 80%;
+                height: 40%;
+                justify-self: center;
+                &__list {
+                    display: flex;
+                    flex-direction: row;
+                    li {
+                        span {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

@@ -13,11 +13,12 @@
 .container {
     width: 100vw;
     margin: 20px 0 30px 0;
-    display: flex;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template: 1fr / repeat(4, 1fr);
     &__box {
         width: 160px;
         height: 160px;
+        place-self: center;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -38,6 +39,21 @@
             cursor: pointer;
             opacity: 1;
             box-shadow: 0 0 3px $color-second;
+        }
+    }
+}
+
+/* ====================================================================================================================
+ * RESPONSIVE
+ * ====================================================================================================================*/
+
+/*-------------  Mobile -------------------*/
+
+@media screen and (max-width: 414px) {
+    .container {
+        grid-template: repeat(4, 1fr) / 1fr;
+        &__box {
+            margin: 15px 0;
         }
     }
 }
