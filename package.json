@@ -1,0 +1,39 @@
+{
+    "name": "tech-deal",
+    "version": "1.0.0",
+    "description": "PM Final Project Cohort 4",
+    "main": "index.js",
+    "scripts": {
+        "dev": "next",
+        "build": "next build",
+        "start": "next start"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Johndev85/Tech-Deal.git"
+    },
+    "keywords": [
+        "React",
+        "JavaScript",
+        "Search",
+        "Comparator"
+    ],
+    "author": "Tech-Deal Team",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Johndev85/Tech-Deal/issues"
+    },
+    "homepage": "https://github.com/Johndev85/Tech-Deal#readme",
+    "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "1.2.30",
+        "@fortawesome/free-brands-svg-icons": "5.14.0",
+        "@fortawesome/free-solid-svg-icons": "5.14.0",
+        "@fortawesome/react-fontawesome": "0.1.11",
+        "next": "9.5.3",
+        "react": "16.13.1",
+        "react-dom": "16.13.1"
+    },
+    "devDependencies": {
+        "sass": "1.26.11"
+    }
+}

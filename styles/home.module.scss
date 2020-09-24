@@ -1,0 +1,34 @@
+@import "./variables";
+
+.searchContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    h1 {
+        font-size: 3rem;
+        color: $color-main;
+    }
+    h2 {
+        padding: 15px;
+        font-weight: 400;
+        color: $color-second;
+    }
+}
+
+/* ====================================================================================================================
+ * RESPONSIVE
+ * ====================================================================================================================*/
+
+/*-------------  Mobile -------------------*/
+
+@media screen and (max-width: 414px) {
+    .searchContainer {
+        width: 100vw;
+        h1 {
+            font-size: 2.2rem;
+            text-align: center;
+        }
+    }
+}
