@@ -2,7 +2,14 @@
  *  MIXINS  SASS
  * ====================================================================================================================*/
 
+@import "./variables";
+
 @mixin hover-btn {
     box-shadow: 0 0 9px $color-btn;
     color: $color-light;
+}
+
+@mixin hover-fav {
+    color: $color-light;
+    cursor: pointer;
 }
