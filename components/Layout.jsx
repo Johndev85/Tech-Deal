@@ -7,7 +7,7 @@ export default function Layout({ children }) {
     return (
         <>
             <Head>
-                <title>title page</title>
+                <title>Home - Tech Deal</title>
                 <meta charset="UTF-8" />
                 <meta
                     name="viewport"

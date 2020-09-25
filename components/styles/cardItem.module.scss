@@ -10,7 +10,7 @@
     border-radius: 15px;
     place-self: center;
     border: none;
-    box-shadow: 0 2px 5px $color-main;
+    box-shadow: 0 10px 25px rgba($color: $color-main, $alpha: 0.3);
     transition-duration: 100ms;
     &:hover {
         transform: translateY(-3px);

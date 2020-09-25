@@ -20,7 +20,8 @@
 .results {
     width: 100vw;
     height: auto;
-    display: grid;
+    margin: 20px 0;
+    display: none;
     grid-template: 1fr / repeat(6, 1fr);
     padding: 20px 80px;
     background-color: $color-bg;
