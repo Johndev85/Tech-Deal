@@ -8,7 +8,7 @@ export default function Layout({ children }) {
         <>
             <Head>
                 <title>Home - Tech Deal</title>
-                <meta charset="UTF-8" />
+                <meta charSet="UTF-8" />
                 <meta
                     name="viewport"
                     content="initial-scale=1.0, width=device-width"

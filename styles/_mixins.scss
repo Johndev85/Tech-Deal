@@ -7,6 +7,7 @@
 @mixin hover-btn {
     box-shadow: 0 0 9px $color-btn;
     color: $color-light;
+    cursor: pointer;
 }
 
 @mixin hover-fav {
