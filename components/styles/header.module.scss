@@ -1,4 +1,4 @@
-@import "../styles/variables";
+@import "../../styles/variables";
 
 .header {
     display: flex;
@@ -18,6 +18,10 @@
             font-weight: 700;
             color: $color-btn;
             font-size: 1.5rem;
+            &:hover {
+                padding-bottom: 3px;
+                border-bottom: 3px solid $color-btn;
+            }
         }
         &__userImg {
             width: 3rem;
@@ -51,21 +55,3 @@
         }
     }
 }
-
-// @media screen and (max-width: 375px) {
-//     .header {
-//         &__logo {
-//             width: 180px;
-//             height: 180px;
-//         }
-//         &__menu {
-//             a {
-//                 display: none;
-//             }
-//             &__userImg {
-//                 width: 2.5rem;
-//                 height: 2.5rem;
-//             }
-//         }
-//     }
-// }

@@ -1,4 +1,5 @@
 @import "../../styles/variables";
+@import "../../styles/mixins";
 
 .footer {
     display: grid;
@@ -24,6 +25,10 @@
                 li {
                     margin: 5px 0;
                     cursor: pointer;
+                    &:hover {
+                        text-decoration: underline;
+                        font-weight: 700;
+                    }
                 }
             }
             h4 {
@@ -49,6 +54,12 @@
                     justify-content: flex-start;
                     align-items: center;
                     cursor: pointer;
+                    &:hover {
+                        span {
+                            text-decoration: underline;
+                            font-weight: 700;
+                        }
+                    }
                 }
                 padding: 5px;
                 display: inherit;
@@ -59,6 +70,9 @@
                 &__icons {
                     font-size: 2rem;
                     margin: 5px 15px 5px 5px;
+                    &:hover {
+                        @include hover-icons;
+                    }
                 }
             }
         }

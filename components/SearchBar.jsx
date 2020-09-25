@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
 
-import styles from "./styles/searchInput.module.scss"
+import styles from "./styles/searchBar.module.scss"
 import { useState } from "react"
 
 export default function SearchBar() {
