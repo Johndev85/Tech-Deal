@@ -1,29 +1,46 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
 
-import styles from "./styles/searchInput.module.scss"
+import styles from "./styles/searchBar.module.scss"
 import { useState } from "react"
 
-export default function SearchBar() {
-    const [keyWord, setKeyWord] = useState({})
+export default function SearchBar({ search }) {
+    const [keyWord, setKeyWord] = useState(" ")
 
     function onInputChange(e) {
-        setKeyWord({ keyword: e.target.value })
+        setKeyWord(e.target.value)
         console.log(keyWord)
     }
 
+    const resetInputField = () => {
+        setKeyWord("")
+    }
+
+    const callSearchFunction = (e) => {
+        e.preventDefault()
+        search(keyWord)
+        resetInputField()
+    }
+
     return (
-        <div className={styles.container}>
+        <form className={styles.container}>
             <FontAwesomeIcon
                 icon={faSearch}
                 className={styles.container__searchIcon}
             />
             <input
-                type="text"
+                className={styles.container__input}
+                value={keyWord}
                 onChange={onInputChange}
-                placeholder="Find your product..."
+                placeholder="Find your tech product..."
+                type="text"
             />
-            <a href="#">Search</a>
-        </div>
+            <input
+                className={styles.container__searchBtn}
+                onClick={callSearchFunction}
+                type="submit"
+                value="Search"
+            />
+        </form>
     )
 }

@@ -38,7 +38,8 @@
         &:hover {
             cursor: pointer;
             opacity: 1;
-            box-shadow: 0 0 3px $color-second;
+            box-shadow: 2px 2px 25px rgba($color: $color-main, $alpha: 0.3);
+            // box-shadow: 0 0 3px $color-second;
         }
     }
 }

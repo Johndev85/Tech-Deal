@@ -3,25 +3,35 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons"
 
 import styles from "./styles/cardItem.module.scss"
 
-export default function CardItem() {
+const DEFAULT_PLACEHOLDER_IMAGE = "https://i.imgur.com/XjSgyFR.png"
+
+const CardItem = ({ product }) => {
+    const poster =
+        product.Poster === "N/A" ? DEFAULT_PLACEHOLDER_IMAGE : product.Poster
     return (
         <div className={styles.card}>
             <div className={styles.card__img}>
-                <img src="./images/jbl.jpg" alt="jbl-tune-500bt" />
+                <img
+                    src={product.thumbnail}
+                    alt="jbl-tune-500bt"
+                    src={poster}
+                />
                 <FontAwesomeIcon
                     icon={faHeart}
                     className={styles.card__img__icon}
                 />
             </div>
             <div className={styles.card__details}>
-                <h2>Product</h2>
-                <span>Type</span>
+                <h2>{product.Title}</h2>
+                <span>des_type</span>
                 <span>Plataform</span>
                 <span>Rating</span>
             </div>
             <div className={styles.card__button}>
-                <a href="#">PRICE</a>
+                <a href="#">Price</a>
             </div>
         </div>
     )
 }
+
+export default CardItem

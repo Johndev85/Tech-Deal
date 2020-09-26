@@ -6,50 +6,54 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 30px;
-    h1 {
+    &__title {
         font-size: 3rem;
         color: $color-main;
     }
-    h2 {
+    &__subTitle {
         padding: 15px;
         font-weight: 400;
         color: $color-second;
     }
-}
-
-.results {
-    width: 100vw;
-    height: auto;
-    margin: 20px 0;
-    display: none;
-    grid-template: 1fr / repeat(6, 1fr);
-    padding: 20px 80px;
-    background-color: $color-bg;
-    box-shadow: 0 0 2px $color-main;
+    &__results {
+        width: 100vw;
+        height: auto;
+        margin: 20px 0;
+        display: grid;
+        grid-template: 1fr / repeat(6, 1fr);
+        padding: 20px 80px;
+        background-color: $color-bg;
+        box-shadow: 0 0 2px $color-main;
+    }
 }
 
 /* ====================================================================================================================
  * RESPONSIVE
  * ====================================================================================================================*/
 
-/*-------------  Mobile -------------------*/
+/*-------------  Tablet ---------------------------------------------*/
 
 @media screen and (max-width: 768px) {
-    .results {
-        grid-template: 1fr / repeat(3, 1fr);
+    .searchContainer {
+        &__results {
+            grid-template: 1fr / repeat(3, 1fr);
+        }
     }
 }
+
+/*-------------  Mobile -------------------*/
 
 @media screen and (max-width: 414px) {
     .searchContainer {
         width: 100vw;
-        h1 {
+        &__title {
             font-size: 2.2rem;
             text-align: center;
         }
-    }
-    .results {
-        grid-template: 1fr / 1fr 1fr;
-        padding: 8px;
+        &__results {
+            margin: 60px 0;
+            grid-template: 1fr / 1fr 1fr;
+            padding: 8px;
+        }
     }
 }
