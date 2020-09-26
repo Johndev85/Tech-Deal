@@ -15,11 +15,31 @@
         font-weight: 400;
         color: $color-second;
     }
+    &__results {
+        width: 100vw;
+        height: auto;
+        margin: 20px 0;
+        display: grid;
+        grid-template: 1fr / repeat(6, 1fr);
+        padding: 20px 80px;
+        background-color: $color-bg;
+        box-shadow: 0 0 2px $color-main;
+    }
 }
 
 /* ====================================================================================================================
  * RESPONSIVE
  * ====================================================================================================================*/
+
+/*-------------  Tablet ---------------------------------------------*/
+
+@media screen and (max-width: 768px) {
+    .searchContainer {
+        &__results {
+            grid-template: 1fr / repeat(3, 1fr);
+        }
+    }
+}
 
 /*-------------  Mobile -------------------*/
 
@@ -29,6 +49,11 @@
         &__title {
             font-size: 2.2rem;
             text-align: center;
+        }
+        &__results {
+            margin: 60px 0;
+            grid-template: 1fr / 1fr 1fr;
+            padding: 8px;
         }
     }
 }

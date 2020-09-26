@@ -4,8 +4,8 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import styles from "./styles/searchBar.module.scss"
 import { useState } from "react"
 
-export default function SearchBar(props) {
-    const [keyWord, setKeyWord] = useState("")
+export default function SearchBar({ search }) {
+    const [keyWord, setKeyWord] = useState(" ")
 
     function onInputChange(e) {
         setKeyWord(e.target.value)
@@ -18,7 +18,7 @@ export default function SearchBar(props) {
 
     const callSearchFunction = (e) => {
         e.preventDefault()
-        // props.search(keyWord)
+        search(keyWord)
         resetInputField()
     }
 
@@ -32,7 +32,7 @@ export default function SearchBar(props) {
                 className={styles.container__input}
                 value={keyWord}
                 onChange={onInputChange}
-                placeholder="Find your product..."
+                placeholder="Find your tech product..."
                 type="text"
             />
             <input
