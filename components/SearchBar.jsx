@@ -5,11 +5,10 @@ import styles from "./styles/searchBar.module.scss"
 import { useState } from "react"
 
 export default function SearchBar({ search }) {
-    const [keyWord, setKeyWord] = useState(" ")
+    const [keyWord, setKeyWord] = useState("")
 
     function onInputChange(e) {
         setKeyWord(e.target.value)
-        console.log(keyWord)
     }
 
     const resetInputField = () => {

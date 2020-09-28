@@ -3,12 +3,10 @@ import Layout from "../components/Layout"
 import SearchBar from "../components/SearchBar"
 import CardItem from "../components/CardItem"
 
-import { useReducer, useEffect, useState } from "react"
-
-const API_URL = "https://www.omdbapi.com/?s=man&apikey=4a3b711b"
+import { useReducer } from "react"
 
 const initialState = {
-    loading: true,
+    loading: false,
     products: [],
     errorMessage: null,
 }
@@ -41,35 +39,39 @@ const reducer = (state, action) => {
 function App() {
     const [state, dispatch] = useReducer(reducer, initialState)
 
-    // useEffect(() => {
-    //     fetch(API_URL)
-    //         .then((response) => response.json())
-    //         .then((jsonResponse) => {
-    //             dispatch({
-    //                 type: "SEARCH_PRODUCT_SUCCESS",
-    //                 payload: jsonResponse.Search,
-    //             })
-    //         })
-    // }, [])
-
     const search = (keyWord) => {
         dispatch({
             type: "SEARCH_PRODUCT_REQUEST",
         })
 
-        fetch(`https://www.omdbapi.com/?s=${keyWord}&apikey=4a3b711b`)
+        fetch(
+            `https://amazon-price1.p.rapidapi.com/search?page=5&keywords=${keyWord}&marketplace=ES`,
+            {
+                method: "GET",
+                headers: {
+                    "x-rapidapi-host": "amazon-price1.p.rapidapi.com",
+                    "x-rapidapi-key":
+                        "f7b7d33c44msh8fc70bda52e206ep17aad3jsn31e87ee80dc6",
+                },
+            }
+        )
             .then((response) => response.json())
+
+            .catch((error) => {
+                console.log(error)
+                dispatch({
+                    type: "SEARCH_PRODUCT_FAILURE",
+                    error: error,
+                })
+            })
+
             .then((jsonResponse) => {
-                if (jsonResponse.Response === "True") {
+                if (jsonResponse) {
                     dispatch({
                         type: "SEARCH_PRODUCT_SUCCESS",
-                        payload: jsonResponse.Search,
+                        payload: jsonResponse,
                     })
-                } else {
-                    dispatch({
-                        type: "SEARCH_PRODUCT_FAILURE",
-                        error: jsonResponse.Error,
-                    })
+                    console.log(jsonResponse)
                 }
             })
     }
@@ -86,18 +88,16 @@ function App() {
                     Online price and offers comparator
                 </h2>
                 <SearchBar search={search} />
+
                 <section className={styles.searchContainer__results}>
                     {loading && !errorMessage ? (
                         <span>loading... </span>
                     ) : errorMessage ? (
                         <div className="errorMessage">{errorMessage}</div>
                     ) : (
-                        products.map((product, id) => (
-                            <CardItem
-                                key={`${id}-${product.title}`}
-                                product={product}
-                            />
-                        ))
+                        products.map((product, index) => {
+                            return <CardItem key={index} product={product} />
+                        })
                     )}
                 </section>
             </section>
