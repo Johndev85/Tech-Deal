@@ -1,6 +1,7 @@
 @import "./variables";
 
 .searchContainer {
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,8 +23,28 @@
         display: grid;
         grid-template: 1fr / repeat(6, 1fr);
         padding: 20px 80px;
-        background-color: $color-bg;
         box-shadow: 0 0 2px $color-main;
+        &__loading {
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: $color-main;
+        }
+        &__notFound {
+            width: 60vw;
+            text-align: left;
+            font-size: 1.3rem;
+            color: $color-main;
+            p {
+                margin: 15px;
+                span {
+                    font-weight: 700;
+                }
+            }
+        }
     }
 }
 
@@ -51,9 +72,12 @@
             text-align: center;
         }
         &__results {
-            margin: 60px 0;
+            margin: 30px 0 30px 0;
             grid-template: 1fr / 1fr 1fr;
             padding: 8px;
+            &__notFound {
+                margin: 30px;
+            }
         }
     }
 }

@@ -14,23 +14,34 @@
     transition-duration: 100ms;
     &:hover {
         transform: translateY(-3px);
+        box-shadow: 5px 15px 20px rgba($color: $color-main, $alpha: 0.6);
+        border: 1px solid $color-light;
+    }
+    &__fav {
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        &__icon {
+            position: relative;
+            z-index: 2;
+            font-size: 1.8rem;
+            color: $color-bg;
+            &:hover {
+                @include hover-fav;
+            }
+        }
     }
     &__img {
         display: flex;
         justify-content: center;
         align-items: center;
         img {
-            width: 80px;
-        }
-        &__icon {
-            position: relative;
-            z-index: 5;
-            top: -40px;
-            left: 20px;
-            font-size: 1.8rem;
-            color: $color-bg;
+            width: 5rem;
+            height: 5rem;
+            object-fit: cover;
+            transition-duration: 500ms;
             &:hover {
-                @include hover-fav;
+                -webkit-transform: scale(1.5);
             }
         }
     }
@@ -41,7 +52,18 @@
         align-items: center;
         padding: 12px;
         h2 {
+            position: relative;
+            z-index: 2;
             font-size: 1.2rem;
+            color: $color-main;
+        }
+        h3 {
+            font-size: 1rem;
+            span {
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: $color-second;
+            }
         }
     }
     &__button {
