@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart } from "@fortawesome/free-solid-svg-icons"
 
@@ -12,24 +13,33 @@ const CardItem = ({ product }) => {
             : product.imageUrl
     return (
         <div className={styles.card}>
+            <div className={styles.card__fav}>
+                <FontAwesomeIcon
+                    icon={faHeart}
+                    className={styles.card__fav__icon}
+                />
+            </div>
             <div className={styles.card__img}>
                 <img
                     src={product.imageUrl}
-                    alt={product.title.substr(0, 14)}
+                    alt={product.title.substr(0, 10)}
                     src={poster}
-                />
-                <FontAwesomeIcon
-                    icon={faHeart}
-                    className={styles.card__img__icon}
                 />
             </div>
             <div className={styles.card__details}>
                 <h2>{product.title.substr(0, 15)}</h2>
-                <span>des_type</span>
-                <span>{product.rating}</span>
+                <h3>
+                    <span>Rating:</span> {product.rating}
+                </h3>
             </div>
             <div className={styles.card__button}>
-                <a href="#">{product.price}</a>
+                <a
+                    href={product.detailPageURL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    {product.price.substr(0, 9)}
+                </a>
             </div>
         </div>
     )

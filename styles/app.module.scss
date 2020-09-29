@@ -1,6 +1,7 @@
 @import "./variables";
 
 .searchContainer {
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,13 +17,12 @@
         color: $color-second;
     }
     &__results {
-        width: 100%;
+        width: 100vw;
         height: auto;
         margin: 20px 0;
         display: grid;
         grid-template: 1fr / repeat(6, 1fr);
         padding: 20px 80px;
-        background-color: $color-bg;
         box-shadow: 0 0 2px $color-main;
         &__loading {
             width: 100vw;
