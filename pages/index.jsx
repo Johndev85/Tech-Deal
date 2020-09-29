@@ -45,7 +45,7 @@ function App() {
         })
 
         fetch(
-            `https://amazon-price1.p.rapidapi.com/search?page=5&keywords=${keyWord}&marketplace=ES`,
+            `https://amazon-price1.p.rapidapi.com/search?page=1&keywords=${keyWord}&marketplace=ES`,
             {
                 method: "GET",
                 headers: {
@@ -56,23 +56,17 @@ function App() {
             }
         )
             .then((response) => response.json())
-
+            .then((jsonResponse) => {
+                dispatch({
+                    type: "SEARCH_PRODUCT_SUCCESS",
+                    payload: jsonResponse,
+                })
+            })
             .catch((error) => {
-                console.log(error)
                 dispatch({
                     type: "SEARCH_PRODUCT_FAILURE",
                     error: error,
                 })
-            })
-
-            .then((jsonResponse) => {
-                if (jsonResponse) {
-                    dispatch({
-                        type: "SEARCH_PRODUCT_SUCCESS",
-                        payload: jsonResponse,
-                    })
-                    console.log(jsonResponse)
-                }
             })
     }
 
@@ -88,7 +82,6 @@ function App() {
                     Online price and offers comparator
                 </h2>
                 <SearchBar search={search} />
-
                 <section className={styles.searchContainer__results}>
                     {loading && !errorMessage ? (
                         <span>loading... </span>
