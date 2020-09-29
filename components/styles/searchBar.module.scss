@@ -6,7 +6,7 @@
     height: 80px;
     margin: 1rem;
     padding: 1rem;
-    input {
+    &__input {
         width: 29rem;
         height: 3.2rem;
         padding: 10px 50px 10px 35px;
@@ -14,6 +14,7 @@
         border: none;
         font-size: 1.1rem;
         box-shadow: 2px 2px 25px rgba($color: $color-main, $alpha: 0.3);
+
         &:focus {
             box-shadow: 0 0 5px $color-second;
         }
@@ -25,7 +26,7 @@
         opacity: 0.2;
         font-size: 1.2rem;
     }
-    a {
+    &__searchBtn {
         position: relative;
         right: 40px;
         padding: 15px 35px;
@@ -34,11 +35,24 @@
         font-size: 1.4rem;
         font-weight: 700;
         color: $color-main;
+        border: none;
         box-shadow: 0 20px 25px rgba($color: $color-main, $alpha: 0.3);
         background-color: $color-btn;
         &:hover {
             @include hover-btn;
         }
+    }
+}
+
+.fieldError {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__message {
+        padding: 1rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: $color-second;
     }
 }
 
@@ -52,21 +66,24 @@
     .container {
         width: 100vw;
         height: auto;
-        input {
+        &__input {
             width: 19rem;
             padding: 10px 10px 10px 35px;
         }
-        a {
+        &__searchBtn {
             position: relative;
             top: 40px;
             left: 120px;
         }
     }
+    .fieldError {
+        margin: 40px;
+    }
 }
 
 @media screen and (max-width: 375px) {
     .container {
-        a {
+        &__searchBtn {
             left: 100px;
         }
     }

@@ -1,0 +1,83 @@
+@import "./variables";
+
+.searchContainer {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    &__title {
+        font-size: 3rem;
+        color: $color-main;
+    }
+    &__subTitle {
+        padding: 15px;
+        font-weight: 400;
+        color: $color-second;
+    }
+    &__results {
+        width: 100vw;
+        height: auto;
+        margin: 20px 0;
+        display: grid;
+        grid-template: 1fr / repeat(6, 1fr);
+        padding: 20px 80px;
+        box-shadow: 0 0 2px $color-main;
+        &__loading {
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: $color-main;
+        }
+        &__notFound {
+            width: 60vw;
+            text-align: left;
+            font-size: 1.3rem;
+            color: $color-main;
+            p {
+                margin: 15px;
+                span {
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}
+
+/* ====================================================================================================================
+ * RESPONSIVE
+ * ====================================================================================================================*/
+
+/*-------------  Tablet ---------------------------------------------*/
+
+@media screen and (max-width: 768px) {
+    .searchContainer {
+        &__results {
+            grid-template: 1fr / repeat(3, 1fr);
+        }
+    }
+}
+
+/*-------------  Mobile -------------------*/
+
+@media screen and (max-width: 414px) {
+    .searchContainer {
+        width: 100vw;
+        &__title {
+            font-size: 2.2rem;
+            text-align: center;
+        }
+        &__results {
+            margin: 30px 0 30px 0;
+            grid-template: 1fr / 1fr 1fr;
+            padding: 8px;
+            &__notFound {
+                margin: 30px;
+            }
+        }
+    }
+}
