@@ -2,6 +2,7 @@ import styles from "../styles/app.module.scss"
 import Layout from "../components/Layout"
 import SearchBar from "../components/SearchBar"
 import CardItem from "../components/CardItem"
+import Loader from "../components/Loader"
 
 import { useReducer } from "react"
 
@@ -24,6 +25,7 @@ const reducer = (state, action) => {
                 ...state,
                 loading: false,
                 products: action.payload,
+                kWord: action.kWord,
             }
         case "SEARCH_PRODUCT_FAILURE":
             return {
@@ -60,6 +62,7 @@ function App() {
                 dispatch({
                     type: "SEARCH_PRODUCT_SUCCESS",
                     payload: jsonResponse,
+                    kWord: keyWord,
                 })
             })
             .catch((error) => {
@@ -70,7 +73,7 @@ function App() {
             })
     }
 
-    const { products, errorMessage, loading } = state
+    const { products, errorMessage, loading, kWord } = state
 
     return (
         <Layout>
@@ -84,13 +87,30 @@ function App() {
                 <SearchBar search={search} />
                 <section className={styles.searchContainer__results}>
                     {loading && !errorMessage ? (
-                        <span>loading... </span>
+                        <span
+                            className={styles.searchContainer__results__loading}
+                        >
+                            <Loader />
+                        </span>
                     ) : errorMessage ? (
                         <div className="errorMessage">{errorMessage}</div>
-                    ) : (
+                    ) : Array.isArray(products) === true ? (
                         products.map((product, index) => {
                             return <CardItem key={index} product={product} />
                         })
+                    ) : (
+                        <div
+                            className={
+                                styles.searchContainer__results__notFound
+                            }
+                        >
+                            <p>
+                                No results for <span> {kWord} </span>{" "}
+                            </p>
+                            <p>
+                                Check your spelling or use more general terms.
+                            </p>
+                        </div>
                     )}
                 </section>
             </section>
