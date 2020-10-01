@@ -5,12 +5,6 @@ import * as Yup from "yup"
 import { Formik, Field, Form, ErrorMessage } from "formik"
 
 const formSchema = Yup.object().shape({
-    UserName: Yup.string()
-        .required("Required field")
-        .max(25, "Maximum 25 characters"),
-    LastName: Yup.string()
-        .required("Required field")
-        .max(25, "Maximum 25 characters"),
     Email: Yup.string()
         .required("Invalid email")
         .max(255, "Maximum 255 characters"),
@@ -19,7 +13,7 @@ const formSchema = Yup.object().shape({
         .min(5, "Minimum  5 characters"),
 })
 
-export default function Register() {
+export default function Login() {
     return (
         <section className={styles.register}>
             <h1>Register Now</h1>
@@ -31,38 +25,15 @@ export default function Register() {
             </ul>
             <Formik
                 initialValues={{
-                    UserName: "",
-                    LastName: "",
                     Email: "",
                     Password: "",
                 }}
                 validationSchema={formSchema}
                 onSubmit={(values) => {
-                    const isChecked = document.getElementById("cbox1").checked
-                    if (isChecked) {
-                        console.log(values)
-                    } else {
-                        alert("Accept the terms")
-                    }
+                    console.log(values)
                 }}
             >
                 <Form action="" className={styles.register__form}>
-                    <Field type="text" name="UserName" placeholder="Name" />
-                    <ErrorMessage
-                        name="UserName"
-                        component="span"
-                        className={styles.register__form__messageError}
-                    />
-                    <Field
-                        type="text"
-                        name="LastName"
-                        placeholder="Last Name"
-                    />
-                    <ErrorMessage
-                        name="LastName"
-                        component="span"
-                        className={styles.register__form__messageError}
-                    />
 
                     <Field type="email" name="Email" placeholder="Email" />
                     <ErrorMessage
@@ -82,23 +53,14 @@ export default function Register() {
                         className={styles.register__form__messageError}
                     />
 
-                    <div className={styles.register__form__checkbox}>
-                        <label>
-                            <input type="checkbox" id="cbox1" />
-                            <small>
-                                I have read the <span>Privacy Policy</span> and
-                                <span>Terms of Use.</span>
-                            </small>
-                        </label>
-                    </div>
-                    <button type="submit">Create Account</button>
+                    <button type="submit">Log In</button>
                 </Form>
             </Formik>
 
             <div className={styles.register__bottom}>
-                <span>Are you already registered?</span>
-                <Link href="/login">
-                    <a>Log In</a>
+                <span>Still no registred?</span>
+                <Link href="/register">
+                    <a>Register</a>
                 </Link>
             </div>
         </section>

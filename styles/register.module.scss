@@ -32,6 +32,11 @@
             margin: 5px 0;
             padding: 10px 5px;
         }
+        &__messageError {
+            align-self: flex-start;
+            color: salmon;
+            font-weight: 700;
+        }
         &__checkbox {
             width: 100%;
             display: flex;

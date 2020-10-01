@@ -1,5 +1,6 @@
 import Modal from 'react-modal'
 import Register from '../pages/register'
+import Login from '../pages/login'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
@@ -20,14 +21,23 @@ const customStyles = {
 Modal.setAppElement('#__next')
 
 export default function Header () {
-  const [modalOpen, setModalOpen] = useState(false)
+  const [OpenRegister, setOpenRegister] = useState(false)
+  const [OpenLogin, setOpenLogin] = useState(false)
 
-  function openModal () {
-    setModalOpen(true)
+
+  function openModalR () {
+    setOpenRegister(true)
+  }
+
+  function openModalL () {
+    setOpenLogin(true)
   }
 
   function closeModal () {
-    setModalOpen(false)
+    if (OpenRegister === true || OpenLogin === true) {
+      setOpenRegister(false)
+      setOpenLogin(false)
+    }
   }
 
   const {
@@ -55,9 +65,11 @@ export default function Header () {
           <a>User</a>
         </Link>
 
-        <button onClick={openModal}>Register</button>
+        <button onClick={openModalR}>Register</button>
+        <button onClick={openModalL}>Login</button>
+
         <Modal
-          isOpen={modalOpen}
+          isOpen={OpenRegister}
           onRequestClose={closeModal}
           style={customStyles}
           contentLabel="Register"
@@ -65,6 +77,16 @@ export default function Header () {
           <button onClick={closeModal}>X</button>
           <Register />
         </Modal>
+        <Modal
+          isOpen={OpenLogin}
+          onRequestClose={closeModal}
+          style={customStyles}
+          contentLabel="Login"
+        >
+          <button onClick={closeModal}>X</button>
+          <Login />
+        </Modal>
+
       </nav>
     </header>
   )
