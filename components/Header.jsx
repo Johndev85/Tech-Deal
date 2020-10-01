@@ -3,6 +3,7 @@ import Modal from "../components/Modal"
 import RegisterModal from "../components/RegisterModal"
 
 import styles from "../components/styles/header.module.scss"
+import Link from "next/link"
 
 export default function Header() {
     return (
@@ -14,14 +15,18 @@ export default function Header() {
             />
 
             <nav className={styles.header__menu}>
-                <a href="">Categories</a>
+                <Link href="">
+                    <a>Categories</a>
+                </Link>
                 <a href="">Favorites</a>
                 <img
                     className={styles.header__menu__userImg}
                     src="/images/user.svg"
                     alt="user-icon"
                 />
-                <button>Register</button>
+                <Link href="/user">
+                    <a>User</a>
+                </Link>
             </nav>
         </header>
     )
