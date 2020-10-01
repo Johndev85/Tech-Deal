@@ -1,7 +1,8 @@
-import styles from "./styles/register.module.scss"
+import Link from "next/link"
+import styles from "../styles/register.module.scss"
 
 export default function Register() {
-    return ReactDOM.createPortal(
+    return (
         <section className={styles.register}>
             <h1>Register Now</h1>
             <h2>To be able to use all the favorite fuctions</h2>
@@ -16,25 +17,21 @@ export default function Register() {
                 <input type="password" placeholder="Password" />
                 <div className={styles.register__form__checkbox}>
                     <label>
-                        {" "}
-                        <input type="checkbox" name="" id="cbox1" />
+                        <input type="checkbox" id="cbox1" />
                         <small>
                             I have read the <span>Privacy Policy</span> and
                             <span>Terms of Use.</span>
-                            I give my permission for Tech Deal to send me
-                            commercial information by email based <br />
-                            on my interests. I can revoke this consent at any
-                            time.
                         </small>
                     </label>
                 </div>
                 <button>Create Account</button>
             </form>
-            <div className="register__bottom">
-                <span>¿Still not registered?</span>
-                <a href="">Sign up</a>
+            <div className={styles.register__bottom}>
+                <span>Are you already registered?</span>
+                <Link href="">
+                    <a>Log In</a>
+                </Link>
             </div>
-            {props.children}
         </section>
     )
 }
