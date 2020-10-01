@@ -1,3 +1,7 @@
+import Modal from "../components/Modal"
+
+import RegisterModal from "../components/RegisterModal"
+
 import styles from "../components/styles/header.module.scss"
 
 export default function Header() {
@@ -17,7 +21,7 @@ export default function Header() {
                     src="/images/user.svg"
                     alt="user-icon"
                 />
-                <a href="">User</a>
+                <button>Register</button>
             </nav>
         </header>
     )
