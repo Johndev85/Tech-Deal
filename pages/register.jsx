@@ -13,6 +13,9 @@ export default function Register() {
             </ul>
 
             <form action="" className={styles.register__form}>
+                <input type="text" placeholder="Name" />
+                <input type="text" placeholder="Last Name" />
+
                 <input type="email" placeholder="Email" />
                 <input type="password" placeholder="Password" />
                 <div className={styles.register__form__checkbox}>
