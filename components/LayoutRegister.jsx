@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Header from '../components/Header'
-import RecommendedContainer from '../components/RecommendContainer'
-import Footer from '../components/Footer'
+import RecommendedContainer from './RecommendContainer'
+import Footer from './Footer'
 
 export default function Layout ({ children }) {
   return (

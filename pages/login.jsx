@@ -1,5 +1,9 @@
-import Link from "next/link"
+
 import styles from "../styles/register.module.scss"
+import HeaderNotRegister from '../components/HeaderNotRegister'
+import Footer from '../components/Footer'
+import Link from 'next/link'
+
 
 import * as Yup from "yup"
 import { Formik, Field, Form, ErrorMessage } from "formik"
@@ -15,8 +19,10 @@ const formSchema = Yup.object().shape({
 
 export default function Login() {
     return (
+        <>
+        <HeaderNotRegister />
         <section className={styles.register}>
-            <h1>Register Now</h1>
+            <h1>Login Now</h1>
             <h2>To be able to use all the favorite fuctions</h2>
             <ul>
                 <li>Save your favorite products permanently</li>
@@ -59,10 +65,14 @@ export default function Login() {
 
             <div className={styles.register__bottom}>
                 <span>Still no registred?</span>
-                <Link href="/register">
-                    <a>Register</a>
+                <Link href='/register'>
+                <a>
+                    Register
+                </a>
                 </Link>
             </div>
         </section>
+                <Footer />
+        </>
     )
 }

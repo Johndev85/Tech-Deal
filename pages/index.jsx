@@ -1,5 +1,6 @@
 import styles from '../styles/app.module.scss'
-import Layout from '../components/Layout'
+import LayoutNotRegister from '../components/LayoutNotRegister'
+import LayoutRegister from '../components/LayoutRegister'
 import SearchBar from '../components/SearchBar'
 import CardItem from '../components/CardItem'
 import Loader from '../components/Loader'
@@ -7,7 +8,7 @@ import Loader from '../components/Loader'
 import { useReducer } from 'react'
 
 const initialState = {
-  loading: false,
+  load: false,
   products: [],
   errorMessage: null
 }
@@ -17,20 +18,20 @@ const reducer = (state, action) => {
     case 'SEARCH_PRODUCT_REQUEST':
       return {
         ...state,
-        loading: true,
+        load: true,
         errorMessage: null
       }
     case 'SEARCH_PRODUCT_SUCCESS':
       return {
         ...state,
-        loading: false,
+        load: false,
         products: action.payload,
         kWord: action.kWord
       }
     case 'SEARCH_PRODUCT_FAILURE':
       return {
         ...state,
-        loading: false,
+        load: false,
         errorMessage: action.error
       }
     default:
@@ -73,48 +74,58 @@ function App () {
       })
   }
 
-  const { products, errorMessage, loading, kWord } = state
+  const { products, errorMessage, load, kWord } = state
 
+
+  function searching () {
+
+    return       <section className={styles.searchContainer}>
+    <h1 className={styles.searchContainer__title}>
+                The Best Tech Offers For you
+    </h1>
+    <h2 className={styles.searchContainer__subTitle}>
+                Online price and offers comparator
+    </h2>
+    <SearchBar search={search} />
+    <section className={styles.searchContainer__results}>
+      {load && !errorMessage ? (
+        <span
+          className={styles.searchContainer__results__loading}
+        >
+          <Loader />
+        </span>
+      ) : errorMessage ? (
+        <div className="errorMessage">{errorMessage}</div>
+      ) : Array.isArray(products) === true ? (
+        products.map((product, index) => {
+          return <CardItem key={index} product={product} />
+        })
+      ) : (
+        <div
+          className={
+            styles.searchContainer__results__notFound
+          }
+        >
+          <p>
+                            No results for <span> {kWord} </span>{' '}
+          </p>
+          <p>
+                            Check your spelling or use more general terms.
+          </p>
+        </div>
+      )}
+    </section>
+  </section>
+
+  }
   return (
-    <Layout>
-      <section className={styles.searchContainer}>
-        <h1 className={styles.searchContainer__title}>
-                    The Best Tech Offers For you
-        </h1>
-        <h2 className={styles.searchContainer__subTitle}>
-                    Online price and offers comparator
-        </h2>
-        <SearchBar search={search} />
-        <section className={styles.searchContainer__results}>
-          {loading && !errorMessage ? (
-            <span
-              className={styles.searchContainer__results__loading}
-            >
-              <Loader />
-            </span>
-          ) : errorMessage ? (
-            <div className="errorMessage">{errorMessage}</div>
-          ) : Array.isArray(products) === true ? (
-            products.map((product, index) => {
-              return <CardItem key={index} product={product} />
-            })
-          ) : (
-            <div
-              className={
-                styles.searchContainer__results__notFound
-              }
-            >
-              <p>
-                                No results for <span> {kWord} </span>{' '}
-              </p>
-              <p>
-                                Check your spelling or use more general terms.
-              </p>
-            </div>
-          )}
-        </section>
-      </section>
-    </Layout>
+
+        <LayoutNotRegister>
+        {searching()}
+      </LayoutNotRegister>
+
+
+
   )
 }
 
