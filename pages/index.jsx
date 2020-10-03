@@ -1,6 +1,6 @@
 import styles from '../styles/app.module.scss'
 import LayoutNotRegister from '../components/LayoutNotRegister'
-import LayoutRegister from '../components/LayoutRegister'
+// import LayoutRegister from '../components/LayoutRegister'
 import SearchBar from '../components/SearchBar'
 import CardItem from '../components/CardItem'
 import Loader from '../components/Loader'
@@ -60,15 +60,18 @@ function App () {
     //         }
     // )
     UserService.findProducts(keyWord)
-      .then((response) => response.json())
-      .then((jsonResponse) => {
+      .then((response) => response)
+      .then((apiRespose) => {
         dispatch({
           type: 'SEARCH_PRODUCT_SUCCESS',
-          payload: jsonResponse,
+          payload: apiRespose.data.data,
           kWord: keyWord
-        })
+        },
+        )
+        
       })
       .catch((error) => {
+        console.log(error.message)
         dispatch({
           type: 'SEARCH_PRODUCT_FAILURE',
           error: error
@@ -77,7 +80,6 @@ function App () {
   }
 
   const { products, errorMessage, load, kWord } = state
-
 
   function searching () {
 
@@ -97,7 +99,11 @@ function App () {
           <Loader />
         </span>
       ) : errorMessage ? (
-        <div className="errorMessage">{errorMessage}</div>
+        <div className={styles.searchContainer__results__loading}>
+          <span>
+          {errorMessage.message}
+          </span>
+          </div>
       ) : Array.isArray(products) === true ? (
         products.map((product, index) => {
           return <CardItem key={index} product={product} />

@@ -25,7 +25,7 @@ const CardItem = ({ product }) => {
                 />
             </div>
             <div className={styles.card__details}>
-                <h2>{product.title.substr(0, 15)}</h2>
+                <h2>{product.name.substr(0, 15)}</h2>
                 <h3>
                     {/* <span>Rating:</span> {product.rating} */}
                 </h3>
@@ -36,7 +36,7 @@ const CardItem = ({ product }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    {product.price.substr(0, 9)}
+                    {product.price}
                 </a>
             </div>
         </div>

@@ -24,10 +24,10 @@ const formSchema = Yup.object().shape({
 
 export default function SignIn() {
     const initialDataUserState = {
-        name: "",
-        lastname: "",
         email: "",
         password: "",
+        name: "",
+        lastname: "",
     }
     const [dataUser, setDataUser] = useState(initialDataUserState)
     const [submitted, setSubmitted] = useState(false)
@@ -45,31 +45,32 @@ export default function SignIn() {
                 </ul>
                 <Formik
                     initialValues={{
-                        UserName: "",
-                        LastName: "",
                         Email: "",
                         Password: "",
+                        UserName: "",
+                        LastName: "",
                     }}
                     validationSchema={formSchema}
                     onSubmit={(values) => {
                         const isChecked = document.getElementById("cbox1")
                             .checked
                         if (isChecked) {
-                            setDataUser({ values })
+                            setDataUser(values )
+                            console.log(dataUser)
                             UserService.create(dataUser)
                                 .then((response) => {
                                     dataUser({
-                                        name: response.data.name,
-                                        lastname: response.data.lastname,
-                                        email: response.data.email,
-                                        password: response.data.password,
+                                        email: response.values.email,
+                                        password: response.values.password,
+                                        name: response.values.name,
+                                        lastname: response.values.lastname,
                                     })
                                     setSubmitted(true)
-                                    console.log(response.message)
+                                    console.log(Response.message)
                                     console.log(dataUser)
                                 })
-                                .catch((e) => {
-                                    console.log(e)
+                                .catch((error) => {
+                                    console.log(error.message)
                                 })
                         } else {
                             alert("Accept the terms")

@@ -34,7 +34,6 @@ const customStyles = {
         <button onClick={openModalR}>Register</button>
         <Modal
         isOpen={OpenRegister
-        
         }
         onRequestClose={closeModal}
         style={customStyles}

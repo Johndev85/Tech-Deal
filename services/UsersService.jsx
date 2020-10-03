@@ -9,7 +9,7 @@ const get = id => {
 }
 
 const create = data => {
-    return http.post('/users', data)
+    return http.post('/register', data)
 }
 
 const update = (id, data) => {
@@ -21,7 +21,7 @@ const remove = id => {
 }
 
 const findProducts = keyword => {
-    return http.get(`/search?query${keyword}`)
+    return http.get(`/search?query=${keyword}`)
 }
 
 export default {
