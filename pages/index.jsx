@@ -121,8 +121,6 @@ function App () {
         {searching()}
       </LayoutNotRegister>
 
-
-
   )
 }
 

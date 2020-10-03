@@ -68,10 +68,9 @@ export default function SignIn() {
                                     })
                                     setSubmitted(true)
                                     console.log(response.message)
-                                    console.log(dataUser)
                                 })
                                 .catch((error) => {
-                                    console.log(error.message)
+                                    console.log(error)
                                 })
                         } else {
                             alert('It is required to accept the terms of use')
