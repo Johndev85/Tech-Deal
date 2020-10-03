@@ -52,8 +52,9 @@ export default function SignIn() {
                     }}
                     validationSchema={formSchema}
                     onSubmit={(values) => {
+                        
                         const isChecked = document.getElementById("cbox1")
-                            .checked
+                        .checked
                         if (isChecked) {
                             setDataUser(values )
                             console.log(dataUser)
@@ -66,14 +67,14 @@ export default function SignIn() {
                                         lastname: response.values.lastname,
                                     })
                                     setSubmitted(true)
-                                    console.log(Response.message)
+                                    console.log(response.message)
                                     console.log(dataUser)
                                 })
                                 .catch((error) => {
                                     console.log(error.message)
                                 })
                         } else {
-                            alert("Accept the terms")
+                            alert('It is required to accept the terms of use')
                         }
                     }}
                 >
@@ -123,7 +124,7 @@ export default function SignIn() {
                                 </small>
                             </label>
                         </div>
-                        <button type="submit">Create Account</button>
+                        <button  type="submit">Create Account</button>
                     </Form>
                 </Formik>
 

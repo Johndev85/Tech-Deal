@@ -1,5 +1,4 @@
 import Modal from 'react-modal'
-import Register from '../pages/register'
 import {useState} from 'react'
 
 const customStyles = {
@@ -15,7 +14,7 @@ const customStyles = {
 
   Modal.setAppElement('#__next')
 
-  export default function AccessUser () {
+  export default function AccessSucess () {
     const [OpenRegister, setOpenRegister] = useState(false)
   
 
@@ -40,7 +39,23 @@ const customStyles = {
         contentLabel="Register"
       >
         <button onClick={closeModal}>X</button>
-        <Register />
+        <div>
+          <span>Successful registration</span>
+        </div>
+        <style jsx>
+        {`
+          div {
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+          }
+          span {
+            font.size: 1.2rem;
+            color: $color-second;
+          }
+        `}
+        </style>
       </Modal>
 
       </>

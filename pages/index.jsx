@@ -27,13 +27,14 @@ const reducer = (state, action) => {
         ...state,
         load: false,
         products: action.payload,
-        kWord: action.kWord
+        kWord: action.kWord,
+        count: action.count
       }
     case 'SEARCH_PRODUCT_FAILURE':
       return {
         ...state,
         load: false,
-        errorMessage: action.error
+        errorMessage: action.error,
       }
     default:
       return state
@@ -47,31 +48,19 @@ function App () {
     dispatch({
       type: 'SEARCH_PRODUCT_REQUEST'
     })
-
-    // fetch(
-    //         `https://amazon-price1.p.rapidapi.com/search?page=1&keywords=${keyWord}&marketplace=ES`,
-    //         {
-    //           method: 'GET',
-    //           headers: {
-    //             'x-rapidapi-host': 'amazon-price1.p.rapidapi.com',
-    //             'x-rapidapi-key':
-    //                     'f7b7d33c44msh8fc70bda52e206ep17aad3jsn31e87ee80dc6'
-    //           }
-    //         }
-    // )
     UserService.findProducts(keyWord)
       .then((response) => response)
       .then((apiRespose) => {
         dispatch({
           type: 'SEARCH_PRODUCT_SUCCESS',
           payload: apiRespose.data.data,
-          kWord: keyWord
+          kWord: keyWord,
+          count: apiRespose.data.count
         },
         )
-        
       })
       .catch((error) => {
-        console.log(error.message)
+        console.log(error)
         dispatch({
           type: 'SEARCH_PRODUCT_FAILURE',
           error: error
@@ -79,7 +68,7 @@ function App () {
       })
   }
 
-  const { products, errorMessage, load, kWord } = state
+  const { products, errorMessage, load, kWord, count } = state
 
   function searching () {
 
@@ -101,10 +90,10 @@ function App () {
       ) : errorMessage ? (
         <div className={styles.searchContainer__results__loading}>
           <span>
-          {errorMessage.message}
+          {errorMessage}
           </span>
           </div>
-      ) : Array.isArray(products) === true ? (
+      ) : Array.isArray(products) === true && count !== 0 ? (
         products.map((product, index) => {
           return <CardItem key={index} product={product} />
         })

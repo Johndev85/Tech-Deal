@@ -7,9 +7,9 @@ const DEFAULT_PLACEHOLDER_IMAGE = "https://i.imgur.com/XjSgyFR.png"
 
 const CardItem = ({ product }) => {
     const poster =
-        product.img === "N/A"
+        product.image_url === "N/A"
             ? DEFAULT_PLACEHOLDER_IMAGE
-            : product.img
+            : product.image_url
     return (
         <div className={styles.card}>
             <div className={styles.card__fav}>
@@ -36,7 +36,7 @@ const CardItem = ({ product }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    {product.price}
+                    {product.price} $
                 </a>
             </div>
         </div>
