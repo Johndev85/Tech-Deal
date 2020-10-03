@@ -1,0 +1,52 @@
+@import "./variables";
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template: 1fr / 50% 50%;
+    &__right {
+        width: 100%;
+        align-content: center;
+        img {
+            width: 300px;
+            margin: 20px 0;
+        }
+        h1,
+        h2 {
+            margin: 10px;
+            color: $color-main;
+        }
+    }
+    &__left {
+        width: auto;
+        height: auto;
+        &__logo__img {
+            width: 180px;
+        }
+        &__icon {
+            margin-right: 20px;
+            font-size: 1.5rem;
+            color: $color-btn;
+        }
+        a {
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: $color-second;
+            transition-duration: 100ms;
+            &:hover {
+                text-decoration: underline;
+                color: $color-light;
+            }
+        }
+    }
+}
+
+/* ====================================================================================================================
+ * RESPONSIVE
+ * ====================================================================================================================*/
+
+/*-------------  Mobile -------------------*/

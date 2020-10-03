@@ -4,6 +4,7 @@ import LayoutRegister from '../components/LayoutRegister'
 import SearchBar from '../components/SearchBar'
 import CardItem from '../components/CardItem'
 import Loader from '../components/Loader'
+import UserService from '../services/UsersService'
 
 import { useReducer } from 'react'
 
@@ -47,17 +48,18 @@ function App () {
       type: 'SEARCH_PRODUCT_REQUEST'
     })
 
-    fetch(
-            `https://amazon-price1.p.rapidapi.com/search?page=1&keywords=${keyWord}&marketplace=ES`,
-            {
-              method: 'GET',
-              headers: {
-                'x-rapidapi-host': 'amazon-price1.p.rapidapi.com',
-                'x-rapidapi-key':
-                        'f7b7d33c44msh8fc70bda52e206ep17aad3jsn31e87ee80dc6'
-              }
-            }
-    )
+    // fetch(
+    //         `https://amazon-price1.p.rapidapi.com/search?page=1&keywords=${keyWord}&marketplace=ES`,
+    //         {
+    //           method: 'GET',
+    //           headers: {
+    //             'x-rapidapi-host': 'amazon-price1.p.rapidapi.com',
+    //             'x-rapidapi-key':
+    //                     'f7b7d33c44msh8fc70bda52e206ep17aad3jsn31e87ee80dc6'
+    //           }
+    //         }
+    // )
+    UserService.findProducts(keyWord)
       .then((response) => response.json())
       .then((jsonResponse) => {
         dispatch({
