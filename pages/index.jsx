@@ -63,7 +63,7 @@ function App () {
         console.log(error)
         dispatch({
           type: 'SEARCH_PRODUCT_FAILURE',
-          error: error
+          error: error.message
         })
       })
   }
