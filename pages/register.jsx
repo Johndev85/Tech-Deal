@@ -6,6 +6,7 @@ import * as Yup from "yup"
 import { Formik, Field, Form, ErrorMessage } from "formik"
 import { useState } from "react"
 import UserService from "../services/UsersService"
+// import {useRouter} from 'next/router'
 
 
 const formSchema = Yup.object().shape({
@@ -31,7 +32,27 @@ export default function SignIn() {
         lastname: "",
     }
     const [dataUser, setDataUser] = useState(initialDataUserState)
-    const [submitted, setSubmitted] = useState(false)
+    // const [submitted, setSubmitted] = useState(false)
+
+    function register(values) {
+        const isChecked = document.getElementById("cbox1")
+            .checked
+        if (isChecked) {
+            setDataUser(values)
+            console.log(dataUser)
+            UserService.register(dataUser)
+                .then((response) => {
+                    // setSubmitted(true)
+                    console.log(response.data.message)
+                    console.log(response.data.error)
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        } else {
+            alert('It is required to accept the terms of use')
+        }
+    }
 
 
 
@@ -55,26 +76,7 @@ export default function SignIn() {
                     }}
                     validationSchema={formSchema}
                     onSubmit={(values) => {
-                        const isChecked = document.getElementById("cbox1")
-                            .checked
-                        if (isChecked) {
-                            setDataUser(values)
-                            console.log(dataUser)
-                            UserService.register(dataUser)
-                                .then((response) => {
-                                    setSubmitted(true)
-                                    console.log(response.data.message)
-                                    console.log(response.data.error)
-                                    if (response.data.error) {
-                                        alert(response.data.error)
-                                    }
-                                })
-                                .catch((error) => {
-                                    console.log(error)
-                                })
-                        } else {
-                            alert('It is required to accept the terms of use')
-                        }
+                        register(values)
                     }}
                 >
                     <Form className={styles.register__form}>
@@ -124,6 +126,7 @@ export default function SignIn() {
                             </label>
                         </div>
                         <button type="submit">Create Account</button>
+
                     </Form>
                 </Formik>
 
