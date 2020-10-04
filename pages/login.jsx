@@ -3,6 +3,8 @@ import styles from "../styles/register.module.scss"
 import HeaderNotRegister from '../components/HeaderNotRegister'
 import Footer from '../components/Footer'
 import Link from 'next/link'
+import UserService from "../services/UsersService"
+
 
 
 import * as Yup from "yup"
@@ -37,6 +39,13 @@ export default function Login() {
                 validationSchema={formSchema}
                 onSubmit={(values) => {
                     console.log(values)
+                    UserService.login(values)
+                        .then((response) => {
+                            console.log(response.data.error)
+                        })
+                        .catch((error) => {
+                            console.log(error)
+                        })
                 }}
             >
                 <Form action="" className={styles.register__form}>
