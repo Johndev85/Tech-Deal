@@ -48,7 +48,7 @@ function App () {
     dispatch({
       type: 'SEARCH_PRODUCT_REQUEST'
     })
-    UserService.findProducts(keyWord)
+    UserService.getProducts(keyWord)
       .then((response) => response)
       .then((apiRespose) => {
         dispatch({

@@ -52,22 +52,15 @@ export default function SignIn() {
                     }}
                     validationSchema={formSchema}
                     onSubmit={(values) => {
-                        
                         const isChecked = document.getElementById("cbox1")
                         .checked
                         if (isChecked) {
-                            setDataUser(values )
+                            setDataUser(values)
                             console.log(dataUser)
-                            UserService.create(dataUser)
+                            UserService.register(dataUser)
                                 .then((response) => {
-                                    dataUser({
-                                        email: response.values.email,
-                                        password: response.values.password,
-                                        name: response.values.name,
-                                        lastname: response.values.lastname,
-                                    })
                                     setSubmitted(true)
-                                    console.log(response.message)
+                                    console.log(response.data.error)
                                 })
                                 .catch((error) => {
                                     console.log(error)
