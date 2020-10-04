@@ -7,17 +7,18 @@ import { Formik, Field, Form, ErrorMessage } from "formik"
 import { useState } from "react"
 import UserService from "../services/UsersService"
 
+
 const formSchema = Yup.object().shape({
-    UserName: Yup.string()
+    username: Yup.string()
         .required("Required field")
         .max(25, "Maximum 25 characters"),
-    LastName: Yup.string()
+    lastname: Yup.string()
         .required("Required field")
         .max(25, "Maximum 25 characters"),
-    Email: Yup.string()
+    email: Yup.string()
         .required("Invalid email")
         .max(255, "Maximum 255 characters"),
-    Password: Yup.string()
+    password: Yup.string()
         .required("Required field")
         .min(5, "Minimum  5 characters"),
 })
@@ -45,10 +46,10 @@ export default function SignIn() {
                 </ul>
                 <Formik
                     initialValues={{
-                        Email: "",
-                        Password: "",
-                        UserName: "",
-                        LastName: "",
+                        email: "",
+                        password: "",
+                        username: "",
+                        lastname: "",
                     }}
                     validationSchema={formSchema}
                     onSubmit={(values) => {
@@ -60,6 +61,7 @@ export default function SignIn() {
                             UserService.register(dataUser)
                                 .then((response) => {
                                     setSubmitted(true)
+                                    console.log(response.data.message)
                                     console.log(response.data.error)
                                 })
                                 .catch((error) => {
@@ -71,37 +73,37 @@ export default function SignIn() {
                     }}
                 >
                     <Form className={styles.register__form}>
-                        <Field type="text" name="UserName" placeholder="Name" />
+                        <Field type="text" name="username" placeholder="Name" />
                         <ErrorMessage
-                            name="UserName"
+                            name="username"
                             component="span"
                             className={styles.register__form__messageError}
                         />
                         <Field
                             type="text"
-                            name="LastName"
+                            name="lastname"
                             placeholder="Last Name"
                         />
                         <ErrorMessage
-                            name="LastName"
+                            name="lastname"
                             component="span"
                             className={styles.register__form__messageError}
                         />
 
-                        <Field type="email" name="Email" placeholder="Email" />
+                        <Field type="email" name="email" placeholder="Email" />
                         <ErrorMessage
-                            name="Email"
+                            name="email"
                             component="span"
                             className={styles.register__form__messageError}
                         />
 
                         <Field
                             type="password"
-                            name="Password"
+                            name="password"
                             placeholder="Password"
                         />
                         <ErrorMessage
-                            name="Password"
+                            name="password"
                             component="span"
                             className={styles.register__form__messageError}
                         />
