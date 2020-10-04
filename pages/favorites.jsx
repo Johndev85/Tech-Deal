@@ -1,7 +1,7 @@
 
 import Favs from '../components/Favs'
 
-export default function favorites () {
+export default function Favorites () {
 
 
     return (
