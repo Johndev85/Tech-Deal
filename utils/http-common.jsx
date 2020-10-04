@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export default axios.create({
-    baseURL: 'http://localhost:4000/',
+    baseURL: 'https://backend.techdeal.vercel.app:4000/',
     headers:{
         'Content-type': 'application/json'
     }
