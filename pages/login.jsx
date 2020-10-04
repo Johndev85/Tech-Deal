@@ -11,10 +11,10 @@ import * as Yup from "yup"
 import { Formik, Field, Form, ErrorMessage } from "formik"
 
 const formSchema = Yup.object().shape({
-    Email: Yup.string()
+    email: Yup.string()
         .required("Invalid email")
         .max(255, "Maximum 255 characters"),
-    Password: Yup.string()
+    password: Yup.string()
         .required("Required field")
         .min(5, "Minimum  5 characters"),
 })
@@ -33,15 +33,18 @@ export default function Login() {
             </ul>
             <Formik
                 initialValues={{
-                    Email: "",
-                    Password: "",
+                    email: "",
+                    password: "",
                 }}
                 validationSchema={formSchema}
                 onSubmit={(values) => {
                     console.log(values)
                     UserService.login(values)
                         .then((response) => {
+                            console.log(response)
+                            console.log(response.data)
                             console.log(response.data.error)
+
                         })
                         .catch((error) => {
                             console.log(error)
@@ -50,20 +53,20 @@ export default function Login() {
             >
                 <Form action="" className={styles.register__form}>
 
-                    <Field type="email" name="Email" placeholder="Email" />
+                    <Field type="email" name="email" placeholder="Email" />
                     <ErrorMessage
-                        name="Email"
+                        name="email"
                         component="span"
                         className={styles.register__form__messageError}
                     />
 
                     <Field
                         type="password"
-                        name="Password"
+                        name="password"
                         placeholder="Password"
                     />
                     <ErrorMessage
-                        name="Password"
+                        name="password"
                         component="span"
                         className={styles.register__form__messageError}
                     />
