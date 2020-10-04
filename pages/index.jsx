@@ -41,7 +41,7 @@ const reducer = (state, action) => {
   }
 }
 
-function App () {
+function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   const search = (keyWord) => {
@@ -70,56 +70,56 @@ function App () {
 
   const { products, errorMessage, load, kWord, count } = state
 
-  function searching () {
+  function searching() {
 
-    return       <section className={styles.searchContainer}>
-    <h1 className={styles.searchContainer__title}>
-                The Best Tech Offers For you
+    return <section className={styles.searchContainer}>
+      <h1 className={styles.searchContainer__title}>
+        The Best Tech Offers For you
     </h1>
-    <h2 className={styles.searchContainer__subTitle}>
-                Online price and offers comparator
+      <h2 className={styles.searchContainer__subTitle}>
+        Online price and offers comparator
     </h2>
-    <SearchBar search={search} />
-    <section className={styles.searchContainer__results}>
-      {load && !errorMessage ? (
-        <span
-          className={styles.searchContainer__results__loading}
-        >
-          <Loader />
-        </span>
-      ) : errorMessage ? (
-        <div className={styles.searchContainer__results__loading}>
-          <span>
-          {errorMessage}
+      <SearchBar search={search} />
+      <section className={styles.searchContainer__results}>
+        {load && !errorMessage ? (
+          <span
+            className={styles.searchContainer__results__loading}
+          >
+            <Loader />
           </span>
+        ) : errorMessage ? (
+          <div className={styles.searchContainer__results__loading}>
+            <span>
+              {errorMessage}
+            </span>
           </div>
-      ) : Array.isArray(products) === true && count !== 0 ? (
-        products.map((product, index) => {
-          return <CardItem key={index} product={product} />
-        })
-      ) : (
-        <div
-          className={
-            styles.searchContainer__results__notFound
-          }
-        >
-          <p>
-                            No results for <span> {kWord} </span>{' '}
+        ) : Array.isArray(products) === true && count !== 0 ? (
+          products.map((product, index) => {
+            return <CardItem key={index} product={product} />
+          })
+        ) : (
+                <div
+                  className={
+                    styles.searchContainer__results__notFound
+                  }
+                >
+                  <p>
+                    No results for <span> {kWord} </span>{' '}
+                  </p>
+                  <p>
+                    Check your spelling or use more general terms.
           </p>
-          <p>
-                            Check your spelling or use more general terms.
-          </p>
-        </div>
-      )}
+                </div>
+              )}
+      </section>
     </section>
-  </section>
 
   }
   return (
 
-        <LayoutNotRegister>
-        {searching()}
-      </LayoutNotRegister>
+    <LayoutNotRegister>
+      {searching()}
+    </LayoutNotRegister>
 
   )
 }

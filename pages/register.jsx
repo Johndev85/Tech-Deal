@@ -33,6 +33,8 @@ export default function SignIn() {
     const [dataUser, setDataUser] = useState(initialDataUserState)
     const [submitted, setSubmitted] = useState(false)
 
+
+
     return (
         <>
             <Header />
@@ -54,7 +56,7 @@ export default function SignIn() {
                     validationSchema={formSchema}
                     onSubmit={(values) => {
                         const isChecked = document.getElementById("cbox1")
-                        .checked
+                            .checked
                         if (isChecked) {
                             setDataUser(values)
                             console.log(dataUser)
@@ -63,6 +65,9 @@ export default function SignIn() {
                                     setSubmitted(true)
                                     console.log(response.data.message)
                                     console.log(response.data.error)
+                                    if (response.data.error) {
+                                        alert(response.data.error)
+                                    }
                                 })
                                 .catch((error) => {
                                     console.log(error)
@@ -118,7 +123,7 @@ export default function SignIn() {
                                 </small>
                             </label>
                         </div>
-                        <button  type="submit">Create Account</button>
+                        <button type="submit">Create Account</button>
                     </Form>
                 </Formik>
 

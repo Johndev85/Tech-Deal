@@ -12,33 +12,37 @@ const CardItem = ({ product }) => {
             : product.image_url
     return (
         <div className={styles.card}>
-            <div className={styles.card__fav}>
-                <FontAwesomeIcon
-                    icon={faHeart}
-                    className={styles.card__fav__icon}
-                />
-            </div>
-            <div className={styles.card__img}>
-                <img
-                    alt={product.name.substr(0, 10)}
-                    src={poster}
-                />
-            </div>
-            <div className={styles.card__details}>
-                <h2>{product.name.substr(0, 15)}</h2>
-                <h3>
-                    {/* <span>Rating:</span> {product.rating} */}
-                </h3>
-            </div>
-            <div className={styles.card__button}>
-                <a
-                    href={product.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    {product.price} $
+            <a href={product.url}
+                target="_blank"
+                rel="noopener noreferrer" >
+                <div className={styles.card__fav}>
+                    <FontAwesomeIcon
+                        icon={faHeart}
+                        className={styles.card__fav__icon}
+                    />
+                </div>
+                <div className={styles.card__img}>
+                    <img
+                        alt={product.name.substr(0, 10)}
+                        src={poster}
+                    />
+                </div>
+                <div className={styles.card__details}>
+                    <h4>{product.name.substr(0, 31)}</h4>
+                    <h3>
+                        {/* <span>Rating:</span> {product.rating} */}
+                    </h3>
+                </div>
+                <div className={styles.card__button}>
+                    <a
+                        href={product.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        {product.price} $
                 </a>
-            </div>
+                </div>
+            </a>
         </div>
     )
 }
