@@ -1,0 +1,65 @@
+@import "./variables";
+
+.container {
+    width: 800px;
+    height: auto;
+    margin: 80px 150px;
+    color: $color-main;
+    text-align: justify;
+    &__left {
+        width: auto;
+        height: auto;
+        &__logo__img {
+            width: 180px;
+        }
+        &__icon {
+            margin-right: 20px;
+            font-size: 1.5rem;
+            color: $color-btn;
+        }
+        a {
+            margin: 40px 0;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: $color-second;
+            transition-duration: 100ms;
+            &:hover {
+                text-decoration: underline;
+                color: $color-light;
+            }
+        }
+    }
+    p {
+        padding: 20px;
+        font-size: 1.3rem;
+    }
+    h1,
+    h3 {
+        padding: 15px;
+    }
+}
+
+/* ====================================================================================================================
+ * RESPONSIVE
+ * ====================================================================================================================*/
+
+/*-------------  tablet -------------------*/
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 80vw;
+        margin: 60px 6rem;
+    }
+}
+/*-------------  mobile -------------------*/
+
+@media screen and (max-width: 414px) {
+    .container {
+        width: 75vw;
+        margin: 40px 4rem;
+        p {
+            font-size: 1.1rem;
+        }
+    }
+}

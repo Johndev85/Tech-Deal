@@ -1,28 +1,17 @@
 @import "./variables";
 
 .container {
-    width: 100vw;
-    height: 100vh;
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    grid-template: 1fr / 50% 50%;
-    &__right {
-        width: 100%;
-        align-content: center;
-        img {
-            width: 300px;
-            margin: 20px 0;
-        }
-        h1,
-        h2 {
-            margin: 10px;
-            color: $color-main;
-        }
-    }
+    width: 800px;
+    height: auto;
+    margin: 80px 150px;
+    color: $color-main;
     &__left {
         width: auto;
         height: auto;
+        font-size: 1.6rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        text-decoration: none;
         &__logo__img {
             width: 180px;
         }
@@ -32,6 +21,7 @@
             color: $color-btn;
         }
         a {
+            margin: 40px 0;
             text-decoration: none;
             font-size: 1.5rem;
             font-weight: 700;
@@ -42,5 +32,12 @@
                 color: $color-light;
             }
         }
+    }
+    p {
+        padding: 20px;
+    }
+    h1,
+    h3 {
+        padding: 15px;
     }
 }

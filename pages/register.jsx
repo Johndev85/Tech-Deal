@@ -117,9 +117,12 @@ export default function SignIn() {
                             <label>
                                 <input type="checkbox" id="cbox1" />
                                 <small>
-                                    I have read the <span>Privacy Policy</span>{" "}
+                                    I have read the 
+                                    <Link href='/privacypolicy'> <span>Privacy Policy</span> </Link> 
                                     and
+                                    <Link href='/termsofuse'>
                                     <span>Terms of Use.</span>
+                                    </Link>
                                 </small>
                             </label>
                         </div>
