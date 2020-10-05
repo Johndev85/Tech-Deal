@@ -18,7 +18,7 @@ The site that allows you to find the best technology deals for you.
 
 **SITE:**
 
-### [techdeal](techdeal.vercel.app)
+### [techdeal](https://techdeal.vercel.app)
 
 <center>
 
