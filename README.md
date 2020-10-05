@@ -18,7 +18,7 @@ The site that allows you to find the best technology deals for you.
 
 **SITE:**
 
-### Pending
+### techdeal.vercel.app
 
 <center>
 
@@ -28,13 +28,15 @@ The site that allows you to find the best technology deals for you.
 
 ## 🎯 Objectives
 
--   Pending
+-   Filter the cheaper electronic article 
+-   Register your favorites products
+-   Save your search 
 
 ---
 
 ## 👨‍👩‍👧‍👦 Target Audiences
 
-Pending
+ 10 years or older
 
 ---
 
@@ -58,20 +60,29 @@ npm install
 4. Run development enviroment.
 
 ```bash
-npm run dev
+npm run dev = dev mode
+npm run start = Prod mode
 ```
 
 ---
 
 ## Api - Descripcion
 
-Pending
+This app allows people to search cheapers articles listed on our site, that information belongs to each site we filter.
+We don´t sell anything or provide publicity to any site.
+Our work is for education purposes. 
+
+This app was build under Platzi Master program for final project stage.
 
 ---
 
 ## 🛠 Deployment
 
-Pending
+- Backend: AWS EC2
+- Frontend: Vercel
+- Database: AWS RDS
+- Repository: GitHub & GitHub Projects 
+- Documentation: Notion
 
 ---
 
@@ -93,17 +104,21 @@ If you want to contribute with this project, just make a Pull Request explaining
 -   CSS3 - SASS
 -   JavaScript
 -   React
--   Nextjs
-
+-   Next js
+-   Node js
+-   Sequilize
+-   AWS RDS
+-   Express js
 ---
 
 ## 🚧 Test
 
-Pending
+<Frontend: Jest>
+<Backend: npm run test>
 
 ---
 
-### _Pruebas description_
+### _Testing description_
 
 Still no implementation. Project under development
 
