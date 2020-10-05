@@ -35,7 +35,6 @@
         "next": "9.5.3",
         "react": "16.13.1",
         "react-dom": "16.13.1",
-        "react-router-dom": "5.2.0",
         "yup": "0.29.3"
     },
     "devDependencies": {
@@ -49,5 +48,15 @@
         "eslint-plugin-standard": "^4.0.1",
         "prettier": "2.1.2",
         "sass": "1.26.11"
+    },
+    "standard": {
+        "ignore": [
+            "/api/**"
+        ]
+    },
+    "eslintConfig": {
+        "extends": [
+            "./node_modules/standard/eslintrc.json"
+        ]
     }
 }

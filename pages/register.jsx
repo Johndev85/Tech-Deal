@@ -8,7 +8,6 @@ import { useState } from "react"
 import UserService from "../services/UsersService"
 // import {useRouter} from 'next/router'
 
-
 const formSchema = Yup.object().shape({
     username: Yup.string()
         .required("Required field")
@@ -35,8 +34,7 @@ export default function SignIn() {
     // const [submitted, setSubmitted] = useState(false)
 
     function register(values) {
-        const isChecked = document.getElementById("cbox1")
-            .checked
+        const isChecked = document.getElementById("cbox1").checked
         if (isChecked) {
             setDataUser(values)
             UserService.register(dataUser)
@@ -47,11 +45,9 @@ export default function SignIn() {
                     console.log(error)
                 })
         } else {
-            alert('It is required to accept the terms of use')
+            alert("It is required to accept the terms of use")
         }
     }
-
-
 
     return (
         <>
@@ -116,17 +112,14 @@ export default function SignIn() {
                             <label>
                                 <input type="checkbox" id="cbox1" />
                                 <small>
-                                    I have read the 
-                                    <span>Privacy Policy</span> 
+                                    I have read the
+                                    <span>Privacy Policy</span>
                                     and
-                                    
                                     <span>Terms of Use.</span>
-                                   
                                 </small>
                             </label>
                         </div>
                         <button type="submit">Create Account</button>
-
                     </Form>
                 </Formik>
 

@@ -8,10 +8,8 @@ import CardItem from "../components/CardItem"
 // import PrivatesRoutes from "../utils/privatesRoutes"
 import Loader from "../components/Loader"
 import UserService from "../services/UsersService"
-import Provider from '../utils/Context'
 
 import { useReducer } from "react"
-
 
 const initialState = {
     load: false,
@@ -102,19 +100,19 @@ function App() {
                             return <CardItem key={index} product={product} />
                         })
                     ) : (
-                                    <div
-                                        className={
-                                            styles.searchContainer__results__notFound
-                                        }
-                                    >
-                                        <p>
-                                            No results for <span> {kWord} </span>{" "}
-                                        </p>
-                                        <p>
-                                            Check your spelling or use more general terms.
+                        <div
+                            className={
+                                styles.searchContainer__results__notFound
+                            }
+                        >
+                            <p>
+                                No results for <span> {kWord} </span>{" "}
                             </p>
-                                    </div>
-                                )}
+                            <p>
+                                Check your spelling or use more general terms.
+                            </p>
+                        </div>
+                    )}
                 </section>
             </section>
         )
@@ -144,11 +142,11 @@ function App() {
         return <NotRegister />
     }
 
-    return <>
-    <Provider> 
-        <Greeting  />
-    </Provider> 
-    </> 
+    return (
+        <>
+            <Greeting isAuth={false} />
+        </>
+    )
 }
 
 export default App

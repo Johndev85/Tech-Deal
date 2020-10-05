@@ -1,10 +1,5 @@
-import LayoutNotRegister from '../components/LayoutNotRegister'
+import LayoutNotRegister from "../components/LayoutNotRegister"
 
-export default function NotRegister ({children}) {
-
-    return (
-        <LayoutNotRegister>
-         {children}
-        </LayoutNotRegister>
-    )
+export default function NotRegister({ children }) {
+    return <LayoutNotRegister>{children}</LayoutNotRegister>
 }
