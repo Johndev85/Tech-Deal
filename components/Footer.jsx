@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import Link from 'next/link'
 
 import styles from '../components/styles/footer.module.scss'
 
@@ -12,8 +13,12 @@ export default function Footer () {
           <ul>
             <li>About us</li>
             <li>All Stores</li>
+            <Link href='/termsofuse'>
             <li>Terms of Use</li>
+            </Link>
+            <Link href='/privacypolicy'>
             <li>Privacy Policy</li>
+            </Link>
           </ul>
         </div>
 

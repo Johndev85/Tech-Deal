@@ -39,12 +39,9 @@ export default function SignIn() {
             .checked
         if (isChecked) {
             setDataUser(values)
-            console.log(dataUser)
             UserService.register(dataUser)
                 .then((response) => {
                     // setSubmitted(true)
-                    console.log(response.data.message)
-                    console.log(response.data.error)
                 })
                 .catch((error) => {
                     console.log(error)
@@ -119,9 +116,12 @@ export default function SignIn() {
                             <label>
                                 <input type="checkbox" id="cbox1" />
                                 <small>
-                                    I have read the <span>Privacy Policy</span>{" "}
+                                    I have read the 
+                                    <span>Privacy Policy</span> 
                                     and
+                                    
                                     <span>Terms of Use.</span>
+                                   
                                 </small>
                             </label>
                         </div>
