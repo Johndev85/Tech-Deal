@@ -49,7 +49,6 @@ const CardItem = ({ product }) => {
 
                 </a>
                 </div>
-            </a>
         </div>
     )
 }
