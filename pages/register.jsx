@@ -39,12 +39,9 @@ export default function SignIn() {
             .checked
         if (isChecked) {
             setDataUser(values)
-            console.log(dataUser)
             UserService.register(dataUser)
                 .then((response) => {
                     // setSubmitted(true)
-                    console.log(response.data.message)
-                    console.log(response.data.error)
                 })
                 .catch((error) => {
                     console.log(error)
@@ -120,11 +117,11 @@ export default function SignIn() {
                                 <input type="checkbox" id="cbox1" />
                                 <small>
                                     I have read the 
-                                    <Link href='/privacypolicy'> <span>Privacy Policy</span> </Link> 
+                                    <span>Privacy Policy</span> 
                                     and
-                                    <Link href='/termsofuse'>
+                                    
                                     <span>Terms of Use.</span>
-                                    </Link>
+                                   
                                 </small>
                             </label>
                         </div>

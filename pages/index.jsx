@@ -138,7 +138,6 @@ function App() {
 
     function Greeting(props) {
         const isAuth = props.isAuth
-        console.log(isAuth)
         if (isAuth) {
             return <UserRegister />
         }
