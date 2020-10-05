@@ -54,8 +54,7 @@ export default function Login() {
                     console.log(values)
                     UserService.login(values)
                         .then((response) => {
-                            console.log(response.data)
-                            console.log(response.data.message)
+
                             setUserToken(response.data.token)
                             isLogged()
                                 })
@@ -68,7 +67,11 @@ export default function Login() {
                 }}
             >
                 <Form action="" className={styles.register__form}>
-
+            <Field
+              type="email"
+              name="email"
+              placeholder="Email"
+            />
             <Field
               type="password"
               name="password"
