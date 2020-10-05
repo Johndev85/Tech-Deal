@@ -5,10 +5,13 @@
     height: auto;
     margin: 80px 150px;
     color: $color-main;
-    text-align: justify;
     &__left {
         width: auto;
         height: auto;
+        font-size: 1.6rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        text-decoration: none;
         &__logo__img {
             width: 180px;
         }
@@ -32,11 +35,13 @@
     }
     p {
         padding: 20px;
-        font-size: 1.3rem;
+        text-align: justify;
     }
     h1,
-    h3 {
-        padding: 15px;
+    h4 {
+        margin-left: 5px;
+        padding: 8px;
+        text-align: justify;
     }
 }
 
