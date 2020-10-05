@@ -30,6 +30,30 @@ export default function PrivacyPolicy() {
                         <p>
                                 Any information we get of a store is used for the only purpose of comparing prices, we do not alter that information and we have no influence over it as well.
                         </p>
+                        <li>
+                            <p>
+                                <img src="https://doto.vteximg.com.br/arquivos/asset-brand-doto.png?v=637261081787000000" alt="DOTO ecommerce"/>
+                            </p>
+                            <p>
+                                Doto allows to .....
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <img src="https://www.digitalife.com.mx/img/2/logo.png"/>
+                            </p>
+                            <p>
+                                Digitallife allows to .....
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <img src="https://www.tecnowow.mx/img/poderweb1712-logo-1505642671.jpg"/>
+                            </p>
+                            <p>
+                                Tecnowow allows to .....
+                            </p>
+                        </li>
                     </ol>
             </section>
             <Footer />
