@@ -1,6 +1,7 @@
 @import "../../styles/variables";
 @import "../../styles/mixins";
 
+
 .card {
     width: 180px;
     height: 280px;
@@ -12,6 +13,9 @@
     border: none;
     box-shadow: 0 10px 25px rgba($color: $color-main, $alpha: 0.3);
     transition-duration: 100ms;
+    a {
+        text-decoration: none;
+    }
     &:hover {
         transform: translateY(-3px);
         box-shadow: 5px 15px 20px rgba($color: $color-main, $alpha: 0.6);
@@ -53,7 +57,9 @@
         padding: 12px;
         h2 {
             position: relative;
+
             font-size: 0.8rem;
+
             color: $color-main;
         }
         a {

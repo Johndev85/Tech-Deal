@@ -34,9 +34,9 @@ export default function SignIn() {
     const [dataUser, setDataUser] = useState(initialDataUserState)
     // const [submitted, setSubmitted] = useState(false)
 
-    function register (values) {
+    function register(values) {
         const isChecked = document.getElementById("cbox1")
-        .checked
+            .checked
         if (isChecked) {
             setDataUser(values)
             console.log(dataUser)
@@ -53,6 +53,8 @@ export default function SignIn() {
             alert('It is required to accept the terms of use')
         }
     }
+
+
 
     return (
         <>
@@ -73,7 +75,7 @@ export default function SignIn() {
                         lastname: "",
                     }}
                     validationSchema={formSchema}
-                    onSubmit={(values) => { 
+                    onSubmit={(values) => {
                         register(values)
                     }}
                 >
@@ -123,8 +125,8 @@ export default function SignIn() {
                                 </small>
                             </label>
                         </div>
-                        <button  type="submit">Create Account</button>
-                        
+                        <button type="submit">Create Account</button>
+
                     </Form>
                 </Formik>
 
