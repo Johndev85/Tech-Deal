@@ -12,6 +12,7 @@ const CardItem = ({ product }) => {
             : product.image_url
     return (
         <div className={styles.card}>
+
             <div className={styles.card__fav}>
                 <FontAwesomeIcon
                     icon={faHeart}
@@ -45,8 +46,9 @@ const CardItem = ({ product }) => {
                     rel="noopener noreferrer"
                 >
                     {product.price} $
+
                 </a>
-            </div>
+                </div>
         </div>
     )
 }

@@ -102,19 +102,19 @@ function App() {
                             return <CardItem key={index} product={product} />
                         })
                     ) : (
-                        <div
-                            className={
-                                styles.searchContainer__results__notFound
-                            }
-                        >
-                            <p>
-                                No results for <span> {kWord} </span>{" "}
+                                    <div
+                                        className={
+                                            styles.searchContainer__results__notFound
+                                        }
+                                    >
+                                        <p>
+                                            No results for <span> {kWord} </span>{" "}
+                                        </p>
+                                        <p>
+                                            Check your spelling or use more general terms.
                             </p>
-                            <p>
-                                Check your spelling or use more general terms.
-                            </p>
-                        </div>
-                    )}
+                                    </div>
+                                )}
                 </section>
             </section>
         )

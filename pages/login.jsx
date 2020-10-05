@@ -11,15 +11,16 @@ import { Formik, Field, Form, ErrorMessage } from "formik"
 
 
 const formSchema = Yup.object().shape({
-    email: Yup.string()
-        .required("Invalid email")
-        .max(255, "Maximum 255 characters"),
-    password: Yup.string()
-        .required("Required field")
-        .min(5, "Minimum  5 characters"),
+  Email: Yup.string()
+    .required("Invalid email")
+    .max(255, "Maximum 255 characters"),
+  Password: Yup.string()
+    .required("Required field")
+    .min(5, "Minimum  5 characters"),
 })
 
 export default function Login() {
+
     const [userToken, setUserToken] = useState(null)
     const [isAuth, setIsAuth] = useState(true)
     
@@ -53,8 +54,7 @@ export default function Login() {
                     console.log(values)
                     UserService.login(values)
                         .then((response) => {
-                            console.log(response.data)
-                            console.log(response.data.message)
+
                             setUserToken(response.data.token)
                             isLogged()
                                 })
@@ -67,39 +67,36 @@ export default function Login() {
                 }}
             >
                 <Form action="" className={styles.register__form}>
+            <Field
+              type="email"
+              name="email"
+              placeholder="Email"
+            />
+            <Field
+              type="password"
+              name="password"
+              placeholder="Password"
+            />
+            <ErrorMessage
+              name="password"
+              component="span"
+              className={styles.register__form__messageError}
+            />
 
-                    <Field type="email" name="email" placeholder="Email" />
-                    <ErrorMessage
-                        name="email"
-                        component="span"
-                        className={styles.register__form__messageError}
-                    />
+            <button type="submit">Log In</button>
+          </Form>
+        </Formik>
 
-                    <Field
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                    />
-                    <ErrorMessage
-                        name="password"
-                        component="span"
-                        className={styles.register__form__messageError}
-                    />
-
-                    <button type="submit">Log In</button>
-                </Form>
-            </Formik>
-
-            <div className={styles.register__bottom}>
-                <span>Still no registred?</span>
-                <Link href='/register'>
-                <a>
-                    Register
+        <div className={styles.register__bottom}>
+          <span>Still no registred?</span>
+          <Link href='/register'>
+            <a>
+              Register
                 </a>
-                </Link>
-            </div>
-        </section>
-                <Footer />
-        </>
-    )
+          </Link>
+        </div>
+      </section>
+      <Footer />
+    </>
+  )
 }
