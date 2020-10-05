@@ -11,10 +11,10 @@ import { Formik, Field, Form, ErrorMessage } from "formik"
 
 
 const formSchema = Yup.object().shape({
-  Email: Yup.string()
+  email: Yup.string()
     .required("Invalid email")
     .max(255, "Maximum 255 characters"),
-  Password: Yup.string()
+  password: Yup.string()
     .required("Required field")
     .min(5, "Minimum  5 characters"),
 })
@@ -51,12 +51,12 @@ export default function Login() {
                 }}
                 validationSchema={formSchema}
                 onSubmit={(values) => {
-                    console.log(values)
                     UserService.login(values)
                         .then((response) => {
-
                             setUserToken(response.data.token)
                             isLogged()
+                            response === 201 && 
+                            alert('Login Sucess')
                                 })
                         .catch((error) => {
                             error === 401 && (
@@ -66,12 +66,18 @@ export default function Login() {
                         })
                 }}
             >
-                <Form action="" className={styles.register__form}>
+                <Form className={styles.register__form}>
             <Field
               type="email"
               name="email"
               placeholder="Email"
             />
+            <ErrorMessage
+              name="email"
+              component="span"
+              className={styles.register__form__messageError}
+            />
+
             <Field
               type="password"
               name="password"
