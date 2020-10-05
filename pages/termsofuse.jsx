@@ -24,12 +24,12 @@ export default function TermsofUse () {
               </Link>
         </div>
 
-            <h1> Terms of Use</h1>
+            <h1>Terms and conditions</h1>
             
                 <ol>
+                    
                     <li>
                         <p>
-                            <h1>Terms and conditions</h1>
                             These terms and conditions sets forth the general terms and conditions of your use of the <a href="https://techdeal.vercel.app">techdeal.vercel.app</a> website and any of its related products and services.  This Agreement is legally binding between you and this Website operator. By accessing and using the Website and Services, you acknowledge that you have read, understood, and agree to be bound by the terms of this Agreement. If you are entering into this Agreement on behalf of a business or other legal entity, you represent that you have the authority to bind such entity to this Agreement, in which case the terms shall refer to such entity. If you do not have such authority, or if you do not agree with the terms of this Agreement, you must not accept this Agreement and may not access and use the Website and Services. You acknowledge that this Agreement is a contract between you and the Operator, even though it is electronic and is not physically signed by you, and it governs your use of the Website and Services.
                         </p>
                     </li>
