@@ -68,7 +68,11 @@ npm run start = Prod mode
 
 ## Api - Descripcion
 
-This app was build under Platzi Master program for final project stage
+This app allows people to search cheapers articles listed on our site, that information belongs to each site we filter.
+We don´t sell anything or provide publicity to any site.
+Our work is for education purposes. 
+
+This app was build under Platzi Master program for final project stage.
 
 ---
 
