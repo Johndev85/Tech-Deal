@@ -18,3 +18,14 @@
 @mixin hover-icons {
     color: $color-btn;
 }
+
+@mixin BtnStyles {
+    padding: 15px 35px;
+    border-radius: 40px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: $color-main;
+    border: none;
+    box-shadow: 0 20px 25px rgba($color: $color-main, $alpha: 0.3);
+    background-color: $color-btn;
+}

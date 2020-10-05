@@ -1,47 +1,37 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMobileAlt } from "@fortawesome/free-solid-svg-icons"
-import { faDesktop } from "@fortawesome/free-solid-svg-icons"
-import { faHeadphones } from "@fortawesome/free-solid-svg-icons"
-import { faGamepad } from "@fortawesome/free-solid-svg-icons"
+import CardItem from '../components/CardItem'
+import UserService from "../services/UsersService"
+import {useState, useEffect} from 'react'
 
-import styles from "./styles/recommendContainer.module.scss"
+import styles from './styles/recommendContainer.module.scss'
 
-export default function RecommendedContainer() {
-    return (
-        <>
-            <div className={styles.title}>
-                <h2>Recommended Categories</h2>
-            </div>
-            <section className={styles.container}>
-                <div className={styles.container__box}>
-                    <FontAwesomeIcon
-                        icon={faMobileAlt}
-                        className={styles.container__box_icon}
-                    />
-                    <h3>Smart phones</h3>
-                </div>
-                <div className={styles.container__box}>
-                    <FontAwesomeIcon
-                        icon={faDesktop}
-                        className={styles.container__box_icon}
-                    />
-                    <h3>Computers</h3>
-                </div>
-                <div className={styles.container__box}>
-                    <FontAwesomeIcon
-                        icon={faHeadphones}
-                        className={styles.container__box_icon}
-                    />
-                    <h3>Electronics</h3>
-                </div>
-                <div className={styles.container__box}>
-                    <FontAwesomeIcon
-                        icon={faGamepad}
-                        className={styles.container__box_icon}
-                    />
-                    <h3>Consoles</h3>
-                </div>
-            </section>
-        </>
-    )
+export default function RecommendedContainer () {
+  const [apiProducts, setApiProdutcs] = useState([])
+
+  useEffect(() => {
+    UserService.randomProducts()
+    .then((response) => response)
+    .then((apiResponse) => {
+      setApiProdutcs(apiResponse.data.data)
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+
+  }, [])
+
+
+  const products = apiProducts
+  return (
+    <>
+      <div className={styles.title}>
+        <h2>Recommended Products</h2>
+      </div>
+      <section className={styles.container}>
+{      products.map((product, index) => {
+              return <CardItem key={index} product={product} />
+          })
+}
+      </section>
+    </>
+  )
 }

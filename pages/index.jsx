@@ -1,13 +1,20 @@
 import styles from "../styles/app.module.scss"
-import Layout from "../components/Layout"
+import LayoutNotRegister from "../components/LayoutNotRegister"
+import LayoutRegister from "../components/LayoutRegister"
 import SearchBar from "../components/SearchBar"
 import CardItem from "../components/CardItem"
+// import NotRegister from "./notRegister"
+// import UserSigned from "./userSigned"
+// import PrivatesRoutes from "../utils/privatesRoutes"
 import Loader from "../components/Loader"
+import UserService from "../services/UsersService"
+import Provider from '../utils/Context'
 
 import { useReducer } from "react"
 
+
 const initialState = {
-    loading: false,
+    load: false,
     products: [],
     errorMessage: null,
 }
@@ -17,20 +24,21 @@ const reducer = (state, action) => {
         case "SEARCH_PRODUCT_REQUEST":
             return {
                 ...state,
-                loading: true,
+                load: true,
                 errorMessage: null,
             }
         case "SEARCH_PRODUCT_SUCCESS":
             return {
                 ...state,
-                loading: false,
+                load: false,
                 products: action.payload,
                 kWord: action.kWord,
+                count: action.count,
             }
         case "SEARCH_PRODUCT_FAILURE":
             return {
                 ...state,
-                loading: false,
+                load: false,
                 errorMessage: action.error,
             }
         default:
@@ -45,38 +53,29 @@ function App() {
         dispatch({
             type: "SEARCH_PRODUCT_REQUEST",
         })
-
-        fetch(
-            `https://amazon-price1.p.rapidapi.com/search?page=1&keywords=${keyWord}&marketplace=ES`,
-            {
-                method: "GET",
-                headers: {
-                    "x-rapidapi-host": "amazon-price1.p.rapidapi.com",
-                    "x-rapidapi-key":
-                        "f7b7d33c44msh8fc70bda52e206ep17aad3jsn31e87ee80dc6",
-                },
-            }
-        )
-            .then((response) => response.json())
-            .then((jsonResponse) => {
+        UserService.getProducts(keyWord)
+            .then((response) => response)
+            .then((apiRespose) => {
                 dispatch({
                     type: "SEARCH_PRODUCT_SUCCESS",
-                    payload: jsonResponse,
+                    payload: apiRespose.data.data,
                     kWord: keyWord,
+                    count: apiRespose.data.count,
                 })
             })
             .catch((error) => {
+                console.log(error)
                 dispatch({
                     type: "SEARCH_PRODUCT_FAILURE",
-                    error: error,
+                    error: error.message,
                 })
             })
     }
 
-    const { products, errorMessage, loading, kWord } = state
+    const { products, errorMessage, load, kWord, count } = state
 
-    return (
-        <Layout>
+    function searching() {
+        return (
             <section className={styles.searchContainer}>
                 <h1 className={styles.searchContainer__title}>
                     The Best Tech Offers For you
@@ -86,36 +85,70 @@ function App() {
                 </h2>
                 <SearchBar search={search} />
                 <section className={styles.searchContainer__results}>
-                    {loading && !errorMessage ? (
+                    {load && !errorMessage ? (
                         <span
                             className={styles.searchContainer__results__loading}
                         >
                             <Loader />
                         </span>
                     ) : errorMessage ? (
-                        <div className="errorMessage">{errorMessage}</div>
-                    ) : Array.isArray(products) === true ? (
+                        <div
+                            className={styles.searchContainer__results__loading}
+                        >
+                            <span>{errorMessage}</span>
+                        </div>
+                    ) : Array.isArray(products) === true && count !== 0 ? (
                         products.map((product, index) => {
                             return <CardItem key={index} product={product} />
                         })
                     ) : (
-                        <div
-                            className={
-                                styles.searchContainer__results__notFound
-                            }
-                        >
-                            <p>
-                                No results for <span> {kWord} </span>{" "}
+                                    <div
+                                        className={
+                                            styles.searchContainer__results__notFound
+                                        }
+                                    >
+                                        <p>
+                                            No results for <span> {kWord} </span>{" "}
+                                        </p>
+                                        <p>
+                                            Check your spelling or use more general terms.
                             </p>
-                            <p>
-                                Check your spelling or use more general terms.
-                            </p>
-                        </div>
-                    )}
+                                    </div>
+                                )}
                 </section>
             </section>
-        </Layout>
-    )
+        )
+    }
+
+    function NotRegister() {
+        return (
+            <>
+                <LayoutNotRegister>{searching()}</LayoutNotRegister>
+            </>
+        )
+    }
+
+    function UserRegister() {
+        return (
+            <>
+                <LayoutRegister>{searching()}</LayoutRegister>
+            </>
+        )
+    }
+
+    function Greeting(props) {
+        const isAuth = props.isAuth
+        if (isAuth) {
+            return <UserRegister />
+        }
+        return <NotRegister />
+    }
+
+    return <>
+    <Provider> 
+        <Greeting  />
+    </Provider> 
+    </> 
 }
 
 export default App

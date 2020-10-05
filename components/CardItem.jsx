@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart } from "@fortawesome/free-solid-svg-icons"
 
@@ -8,11 +7,12 @@ const DEFAULT_PLACEHOLDER_IMAGE = "https://i.imgur.com/XjSgyFR.png"
 
 const CardItem = ({ product }) => {
     const poster =
-        product.imageUrl === "N/A"
+        product.image_url === "N/A"
             ? DEFAULT_PLACEHOLDER_IMAGE
-            : product.imageUrl
+            : product.image_url
     return (
         <div className={styles.card}>
+
             <div className={styles.card__fav}>
                 <FontAwesomeIcon
                     icon={faHeart}
@@ -20,27 +20,35 @@ const CardItem = ({ product }) => {
                 />
             </div>
             <div className={styles.card__img}>
+            <a href={product.url}
+                    target="_blank"
+                    rel="noopener noreferrer">
                 <img
-                    src={product.imageUrl}
-                    alt={product.title.substr(0, 10)}
+                    alt={product.name.substr(0, 10)}
                     src={poster}
                 />
+                </a>
             </div>
             <div className={styles.card__details}>
-                <h2>{product.title.substr(0, 15)}</h2>
+            <a href={product.url}
+                    target="_blank"
+                    rel="noopener noreferrer">
+                <h2>{product.name.substr(0, 32)}</h2>
+            </a>
                 <h3>
-                    <span>Rating:</span> {product.rating}
+                    {/* <span>Rating:</span> {product.rating} */}
                 </h3>
             </div>
             <div className={styles.card__button}>
                 <a
-                    href={product.detailPageURL}
+                    href={product.url}
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    {product.price.substr(0, 9)}
+                    {product.price} $
+
                 </a>
-            </div>
+                </div>
         </div>
     )
 }

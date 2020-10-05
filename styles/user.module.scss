@@ -1,0 +1,72 @@
+@import "../styles/variables";
+
+.favContainer {
+    border: 1px solid $color-main;
+    margin: 10px;
+    background-color: $color-bg;
+}
+
+.title h2 {
+    font-weight: 700;
+    color: $color-main;
+    text-align: center;
+}
+
+.productsContainer {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(50px, 200px));
+    grid-gap: 10px;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.container {
+    background-color: $color-bg;
+    border: 1px solid $color-main;
+    margin: 10px;
+    background-color: $color-bg;
+    &__title {
+        font-weight: 700;
+        color: $color-main;
+        text-align: center;
+    &__pass {
+        fill: currentcolor;
+        outline: 0;
+        box-sizing: border-box;
+        transition: box-shadow 300ms;
+        display: flex;
+        align-items: center;
+        line-height: 26px;
+        padding: 4px 10px;
+        position: relative;
+        border-radius: 3px;
+        box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px inset, rgba(15, 15, 15, 0.1) 0px 1px 1px inset;
+        cursor: text;
+        margin-top: 4px;
+        margin-bottom: 8px;
+        }
+    }
+}
+
+
+
+
+
+/* ====================================================================================================================
+ * RESPONSIVE
+ * ====================================================================================================================*/
+
+/*-------------  Mobile -------------------*/
+
+
+
+@media screen and (max-width: 414px) {
+    .productsContainer {
+        width: 100vw;
+        h2 {
+            font-size: 2.2rem;
+            text-align: center;
+        }
+    }
+
+}
