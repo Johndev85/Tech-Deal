@@ -57,9 +57,15 @@
         padding: 12px;
         h4 {
             position: relative;
-            font-size: 1rem;
+
+            font-size: 0.8rem;
+
             color: $color-main;
         }
+        a {
+            text-decoration: none;
+        }
+
         h3 {
             font-size: 1rem;
             span {

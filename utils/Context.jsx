@@ -1,21 +1,22 @@
-import { createContext, useState } from 'react'
+import { createContext } from 'react'
+import isLogged from '../pages/login'
 
-const Context = createContext()
+const AuthContext = createContext()
+const TokenContext = createContext()
 
 const Provider = ({children}) => {
-    const [isAuth, setIsAuth] = useState(true)
 
-    const value = {
-        isAuth,
-        activateAuth: () => {
-            setIsAuth(true)
-        }
-    }
+   const state = [isLogged()]
+   console.log(state)
+
     return (
-        <Context.Provider value={value}>
+
+        <AuthContext.Provider value={state.isAuth}>
+        <TokenContext.Provider value={state.userToken}>
             {children}
-        </Context.Provider>
+        </TokenContext.Provider>
+        </AuthContext.Provider>
+
     )
 }
-
 export default Provider

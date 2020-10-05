@@ -4,11 +4,11 @@ import HeaderNotRegister from '../components/HeaderNotRegister'
 import Footer from '../components/Footer'
 import Link from 'next/link'
 import UserService from "../services/UsersService"
-
-
+import { useState } from 'react'
 
 import * as Yup from "yup"
 import { Formik, Field, Form, ErrorMessage } from "formik"
+
 
 const formSchema = Yup.object().shape({
   Email: Yup.string()
@@ -20,42 +20,54 @@ const formSchema = Yup.object().shape({
 })
 
 export default function Login() {
-  return (
-    <>
-      <HeaderNotRegister />
-      <section className={styles.register}>
-        <h1>Login Now</h1>
-        <h2>To be able to use all the favorite fuctions</h2>
-        <ul>
-          <li>Save your favorite products permanently</li>
-          <li>Compare multiple products</li>
-          <li>Do not miss the best prices</li>
-        </ul>
-        <Formik
-          initialValues={{
-            Email: "",
-            Password: "",
-          }}
-          validationSchema={formSchema}
-          onSubmit={(values) => {
-            console.log(values)
-            UserService.login(values)
-              .then((response) => {
-                console.log(response.data.error)
-              })
-              .catch((error) => {
-                console.log(error)
-              })
-          }}
-        >
-          <Form action="" className={styles.register__form}>
 
-            <Field type="email" name="email" placeholder="Email" />
-            <ErrorMessage
-              name="Email"
-              component="span"
-              className={styles.register__form__messageError}
-            />
+    const [userToken, setUserToken] = useState(null)
+    const [isAuth, setIsAuth] = useState(true)
+    
+
+    function isLogged () {
+        if (userToken !== null) {
+            setIsAuth(true)
+        }
+        return [isAuth, userToken]
+    }
+
+    return (
+
+        <>
+        <HeaderNotRegister />
+        <section className={styles.register}>
+            <h1>Login Now</h1>
+            <h2>To be able to use all the favorite fuctions</h2>
+            <ul>
+                <li>Save your favorite products permanently</li>
+                <li>Compare multiple products</li>
+                <li>Do not miss the best prices</li>
+            </ul>
+            <Formik
+                initialValues={{
+                    email: "",
+                    password: "",
+                }}
+                validationSchema={formSchema}
+                onSubmit={(values) => {
+                    console.log(values)
+                    UserService.login(values)
+                        .then((response) => {
+                            console.log(response.data)
+                            console.log(response.data.message)
+                            setUserToken(response.data.token)
+                            isLogged()
+                                })
+                        .catch((error) => {
+                            error === 401 && (
+                                alert('user no found')
+                            )
+
+                        })
+                }}
+            >
+                <Form action="" className={styles.register__form}>
 
             <Field
               type="password"
