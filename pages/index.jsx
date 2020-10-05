@@ -6,11 +6,12 @@ import CardItem from "../components/CardItem"
 // import NotRegister from "./notRegister"
 // import UserSigned from "./userSigned"
 // import PrivatesRoutes from "../utils/privatesRoutes"
-// import Context from "../utils/Context"
 import Loader from "../components/Loader"
 import UserService from "../services/UsersService"
+import Provider from '../utils/Context'
 
 import { useReducer } from "react"
+
 
 const initialState = {
     load: false,
@@ -137,13 +138,18 @@ function App() {
 
     function Greeting(props) {
         const isAuth = props.isAuth
+        console.log(isAuth)
         if (isAuth) {
             return <UserRegister />
         }
         return <NotRegister />
     }
 
-    return <Greeting isAuth={true} />
+    return <>
+    <Provider> 
+        <Greeting  />
+    </Provider> 
+    </> 
 }
 
 export default App

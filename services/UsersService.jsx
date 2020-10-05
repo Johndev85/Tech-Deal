@@ -4,6 +4,11 @@ const getProducts = keyword => {
     return http.get(`/search?query=${keyword}`)
 }
 
+const randomProducts = () => {
+    return http.get(`/recommendations`)
+}
+
+
 const register = user => {
     return http.post('/register', user)
 }
@@ -20,6 +25,7 @@ const updateUser = (id, user) => {
 
 export default {
     getProducts,
+    randomProducts,
     register,
     login,
     updateUser,

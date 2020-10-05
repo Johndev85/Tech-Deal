@@ -4,11 +4,11 @@ import HeaderNotRegister from '../components/HeaderNotRegister'
 import Footer from '../components/Footer'
 import Link from 'next/link'
 import UserService from "../services/UsersService"
-
-
+import { useState } from 'react'
 
 import * as Yup from "yup"
 import { Formik, Field, Form, ErrorMessage } from "formik"
+
 
 const formSchema = Yup.object().shape({
     email: Yup.string()
@@ -20,7 +20,19 @@ const formSchema = Yup.object().shape({
 })
 
 export default function Login() {
+    const [userToken, setUserToken] = useState(null)
+    const [isAuth, setIsAuth] = useState(true)
+    
+
+    function isLogged () {
+        if (userToken !== null) {
+            setIsAuth(true)
+        }
+        return [isAuth, userToken]
+    }
+
     return (
+
         <>
         <HeaderNotRegister />
         <section className={styles.register}>
@@ -41,13 +53,16 @@ export default function Login() {
                     console.log(values)
                     UserService.login(values)
                         .then((response) => {
-                            console.log(response)
                             console.log(response.data)
-                            console.log(response.data.error)
-
-                        })
+                            console.log(response.data.message)
+                            setUserToken(response.data.token)
+                            isLogged()
+                                })
                         .catch((error) => {
-                            console.log(error)
+                            error === 401 && (
+                                alert('user no found')
+                            )
+
                         })
                 }}
             >
