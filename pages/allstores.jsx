@@ -32,7 +32,7 @@ export default function PrivacyPolicy() {
                         </p>
                         <li>
                             <p>
-                                <img src="https://doto.vteximg.com.br/arquivos/asset-brand-doto.png?v=637261081787000000" alt="DOTO ecommerce"/>
+                                <img src="https://doto.vteximg.com.br/arquivos/asset-brand-doto.png?v=637261081787000000" alt="Doto ecommerce logo"/>
                             </p>
                             <p>
                                 Doto allows to .....
@@ -40,7 +40,7 @@ export default function PrivacyPolicy() {
                         </li>
                         <li>
                             <p>
-                                <img src="https://www.digitalife.com.mx/img/2/logo.png"/>
+                                <img src="https://www.digitalife.com.mx/img/2/logo.png" alt="Digitalife ecommerce logo"/>
                             </p>
                             <p>
                                 Digitallife allows to .....
@@ -48,7 +48,7 @@ export default function PrivacyPolicy() {
                         </li>
                         <li>
                             <p>
-                                <img src="https://www.tecnowow.mx/img/poderweb1712-logo-1505642671.jpg"/>
+                                <img src="https://www.tecnowow.mx/img/poderweb1712-logo-1505642671.jpg" alt="Tecnowow ecommerce logo"/>
                             </p>
                             <p>
                                 Tecnowow allows to .....
