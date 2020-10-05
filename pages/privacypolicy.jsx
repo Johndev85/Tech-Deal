@@ -58,8 +58,6 @@ export default function PrivacyPolicy() {
                                 <h4>Enforce terms and conditions and policies</h4>
                                 <h4>Run and operate the Website and Services</h4>
                             </p>
-                        </li>
-                        <li>
                             <p>
                                 Processing your Personal Information depends on how you interact with the Website and Services, where you are located in the world and if one of the following applies: (i) you have given your consent for one or more specific purposes; this, however, does not apply, whenever the processing of Personal Information is subject to European data protection law; (ii) provision of information is necessary for the performance of an agreement with you and/or for any pre-contractual obligations thereof; (iii) processing is necessary for compliance with a legal obligation to which you are subject; (iv) processing is related to a task that is carried out in the public interest or in the exercise of official authority vested in us; (v) processing is necessary for the purposes of the legitimate interests pursued by us or by a third party.
                             </p>
