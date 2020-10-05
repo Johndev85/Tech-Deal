@@ -7,7 +7,6 @@ const TokenContext = createContext()
 const Provider = ({children}) => {
 
    const state = [isLogged()]
-   console.log(state)
 
     return (
 

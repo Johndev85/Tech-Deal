@@ -11,7 +11,6 @@ export default function RecommendedContainer () {
     UserService.randomProducts()
     .then((response) => response)
     .then((apiResponse) => {
-      console.log(apiResponse)
       setApiProdutcs(apiResponse.data.data)
     })
     .catch((error) => {
@@ -22,7 +21,6 @@ export default function RecommendedContainer () {
 
 
   const products = apiProducts
-  console.log(products)
   return (
     <>
       <div className={styles.title}>
