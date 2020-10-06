@@ -5,11 +5,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 
 import styles from '../styles/allstores.module.scss'
+import Head from 'next/head'
 
-export default function PrivacyPolicy() {
+export default function AllStores() {
 
     return (
         <>
+            <Head>
+                <title>All Stores - Tech Deal</title>
+            </Head>
             <HeaderNotRegister />
             <section className={styles.container}>
 

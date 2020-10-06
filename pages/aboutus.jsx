@@ -5,11 +5,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 
 import styles from '../styles/aboutus.module.scss'
+import Head from 'next/head'
 
-export default function PrivacyPolicy() {
+export default function AboutUs() {
 
     return (
         <>
+            <Head>
+                <title>About Us - Tech Deal</title>
+            </Head>
             <HeaderNotRegister />
             <section className={styles.container}>
 

@@ -3,6 +3,7 @@ import Footer from '../components/Footer'
 import Link from "next/link"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
+import Head from 'next/head'
 
 import styles from '../styles/termsofuse.module.scss'
 
@@ -10,6 +11,9 @@ export default function TermsofUse () {
 
     return (
             <>
+        <Head>
+            <title>Terms of use - Tech Deal</title>
+        </Head>
         <HeaderNotRegister />
         <section className={styles.container}>
 
