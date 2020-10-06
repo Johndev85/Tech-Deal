@@ -6,7 +6,8 @@ import * as Yup from "yup"
 import { Formik, Field, Form, ErrorMessage } from "formik"
 import { useState } from "react"
 import UserService from "../services/UsersService"
-import { useRouter } from "next/router"
+// import {useRouter} from 'next/router'
+import Head from "next/head"
 
 const formSchema = Yup.object().shape({
     username: Yup.string()
@@ -62,6 +63,9 @@ export default function SignIn() {
 
     return (
         <>
+            <Head>
+                <title>Register - Tech Deal</title>
+            </Head>
             <Header />
             <section className={styles.register}>
                 <h1>Register Now</h1>
