@@ -1,5 +1,5 @@
 import styles from "../styles/register.module.scss"
-import HeaderNotRegister from "../components/HeaderNotRegister"
+import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Link from "next/link"
 import UserService from "../services/UsersService"
@@ -58,7 +58,7 @@ export default function Login() {
 
     return (
         <>
-            <HeaderNotRegister />
+            <Header />
             <section className={styles.register}>
                 <h1>Login Now</h1>
                 <h2>To be able to use all the favorite fuctions</h2>

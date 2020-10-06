@@ -1,12 +1,16 @@
-import Link from "next/link"
-import { useRouter } from "next/router"
+import MenuSignIn from "../components/MenuSignIn"
+import MenuSignOut from "../components/MenuSignOut"
 
 import styles from "../components/styles/header.module.scss"
 
 export default function Header() {
-    const {
-        query: { id },
-    } = useRouter()
+    function UserMenu(props) {
+        const isAuth = props.isAuth
+        if (isAuth) {
+            return <MenuSignIn />
+        }
+        return <MenuSignOut />
+    }
 
     return (
         <header className={styles.header}>
@@ -15,19 +19,8 @@ export default function Header() {
                 src="https://i.imgur.com/f83h2PS.png"
                 alt="logo-tech-deal"
             />
-            <nav className={styles.header__menu}>
-                <a href="">Favorites</a>
-                <img
-                    className={styles.header__menu__userImg}
-                    src="/images/user.svg"
-                    alt="user-icon"
-                />
-                <Link href={`/user/${id}`}>
-                    <a>User</a>
-                </Link>
 
-                <button>Logout</button>
-            </nav>
+            <UserMenu isAuth={false} />
         </header>
     )
 }

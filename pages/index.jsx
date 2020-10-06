@@ -1,16 +1,12 @@
-import NotRegister from "./notregister"
-import UserSigned from "./usersigned"
+import Layout from "../components/Layout"
+import App from "./app"
 
 const HomePage = () => {
-    function Greeting(props) {
-        const isAuth = props.isAuth
-        if (isAuth) {
-            return <UserSigned />
-        }
-        return <NotRegister />
-    }
-
-    return <Greeting isAuth={false} />
+    return (
+        <Layout>
+            <App />
+        </Layout>
+    )
 }
 
 export default HomePage

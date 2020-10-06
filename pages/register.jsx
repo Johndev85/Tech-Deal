@@ -1,5 +1,5 @@
 import styles from "../styles/register.module.scss"
-import Header from "../components/HeaderNotRegister"
+import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Link from "next/link"
 import * as Yup from "yup"

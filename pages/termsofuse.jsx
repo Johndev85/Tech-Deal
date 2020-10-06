@@ -1,4 +1,4 @@
-import HeaderNotRegister from "../components/HeaderNotRegister"
+import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Link from "next/link"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -13,7 +13,7 @@ export default function TermsofUse() {
             <Head>
                 <title>Terms of use - Tech Deal</title>
             </Head>
-            <HeaderNotRegister />
+            <Header />
 
             <section className={styles.container}>
                 <div className={styles.container__left}>
