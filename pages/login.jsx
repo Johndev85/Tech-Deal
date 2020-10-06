@@ -8,7 +8,7 @@ import { useState } from 'react'
 
 import * as Yup from "yup"
 import { Formik, Field, Form, ErrorMessage } from "formik"
-
+import Head from 'next/head'
 
 const formSchema = Yup.object().shape({
   email: Yup.string()
@@ -35,6 +35,9 @@ export default function Login() {
     return (
 
         <>
+        <Head>
+            <title>Login - Tech Deal</title>
+        </Head>
         <HeaderNotRegister />
         <section className={styles.register}>
             <h1>Login Now</h1>
@@ -94,7 +97,7 @@ export default function Login() {
         </Formik>
 
         <div className={styles.register__bottom}>
-          <span>Still no registred?</span>
+          <span>Still no registered?</span>
           <Link href='/register'>
             <a>
               Register

@@ -18,7 +18,7 @@ The site that allows you to find the best technology deals for you.
 
 **SITE:**
 
-### techdeal.vercel.app
+### [techdeal](https://techdeal.vercel.app)
 
 <center>
 
@@ -57,13 +57,18 @@ cd Tech-Deal
 npm install
 ```
 
-4. Run development enviroment.
+4. Build app.
+
+```bash
+npm run build 
+```
+
+5. Run development enviroment.
 
 ```bash
 npm run dev = dev mode
 npm run start = Prod mode
 ```
-
 ---
 
 ## Api - Descripcion

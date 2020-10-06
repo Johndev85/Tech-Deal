@@ -11,8 +11,12 @@ export default function Footer () {
         <div className={styles.footer__top__general}>
           <h4>General</h4>
           <ul>
+            <Link href='/aboutus'>
             <li>About us</li>
+            </Link>
+            <Link href='/allstores'>
             <li>All Stores</li>
+            </Link>
             <Link href='/termsofuse'>
             <li>Terms of Use</li>
             </Link>
