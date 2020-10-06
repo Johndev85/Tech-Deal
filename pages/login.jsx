@@ -97,7 +97,7 @@ export default function Login() {
         </Formik>
 
         <div className={styles.register__bottom}>
-          <span>Still no registred?</span>
+          <span>Still no registered?</span>
           <Link href='/register'>
             <a>
               Register
