@@ -6,7 +6,6 @@ import * as Yup from "yup"
 import { Formik, Field, Form, ErrorMessage } from "formik"
 import { useState } from "react"
 import UserService from "../services/UsersService"
-// import {useRouter} from 'next/router'
 
 const formSchema = Yup.object().shape({
     username: Yup.string()
@@ -39,7 +38,14 @@ export default function SignIn() {
             setDataUser(values)
             UserService.register(dataUser)
                 .then((response) => {
-                    // setSubmitted(true)
+                    console.log(response)
+                    if (
+                        response.data.message === "User successfully registered"
+                    ) {
+                        alert("user created")
+                    } else {
+                        alert(response.data.error)
+                    }
                 })
                 .catch((error) => {
                     console.log(error)
