@@ -4,6 +4,8 @@ import Footer from "../components/Footer"
 import Link from "next/link"
 import UserService from "../services/UsersService"
 import { useState } from "react"
+import jwt_decoded from "jwt-decode"
+import { useRouter } from "next/router"
 
 import * as Yup from "yup"
 import { Formik, Field, Form, ErrorMessage } from "formik"
@@ -18,14 +20,40 @@ const formSchema = Yup.object().shape({
 })
 
 export default function Login() {
+    const router = useRouter()
     const [userToken, setUserToken] = useState(null)
-    const [isAuth, setIsAuth] = useState(true)
+    const [tkDecoded, setTkDecoded] = useState(null)
+    const [isAuth, setIsAuth] = useState(false)
 
-    function isLogged() {
-        if (userToken !== null) {
-            setIsAuth(true)
+    function authentication(login) {
+        UserService.login(login)
+            .then((response) => {
+                console.log(response)
+                if (response.data.token) {
+                    setUserToken(response.data.token)
+                    isLogged(userToken)
+                }
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
+    function isLogged(token) {
+        if (token !== null) {
+            const decoded = jwt_decoded(token)
+            if (decoded) {
+                setTkDecoded(decoded)
+                setIsAuth(true)
+                alert("Login Sucess")
+                // router.push("/usersigned")
+                console.log(isAuth)
+                console.log(tkDecoded)
+            }
+        } else {
+            alert("No such user found")
+            console.log("No such user found")
         }
-        return [isAuth, userToken]
     }
 
     return (
@@ -46,15 +74,8 @@ export default function Login() {
                     }}
                     validationSchema={formSchema}
                     onSubmit={(values) => {
-                        UserService.login(values)
-                            .then((response) => {
-                                setUserToken(response.data.token)
-                                isLogged()
-                                response === 201 && alert("Login Sucess")
-                            })
-                            .catch((error) => {
-                                error === 401 && alert("user no found")
-                            })
+                        console.log(values)
+                        authentication(values)
                     }}
                 >
                     <Form className={styles.register__form}>

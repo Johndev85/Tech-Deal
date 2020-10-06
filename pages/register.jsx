@@ -6,6 +6,7 @@ import * as Yup from "yup"
 import { Formik, Field, Form, ErrorMessage } from "formik"
 import { useState } from "react"
 import UserService from "../services/UsersService"
+import { useRouter } from "next/router"
 
 const formSchema = Yup.object().shape({
     username: Yup.string()
@@ -29,8 +30,9 @@ export default function SignIn() {
         name: "",
         lastname: "",
     }
+    const router = useRouter()
     const [dataUser, setDataUser] = useState(initialDataUserState)
-    // const [submitted, setSubmitted] = useState(false)
+    const [userToken, setUserToken] = useState(null)
 
     function register(values) {
         const isChecked = document.getElementById("cbox1").checked
@@ -43,9 +45,12 @@ export default function SignIn() {
                         response.data.message === "User successfully registered"
                     ) {
                         alert("user created")
-                    } else {
-                        alert(response.data.error)
-                    }
+                        UserService.login(dataUser).then((response) => {
+                            setUserToken(response.data.token)
+                            router.push("/usersigned")
+                            console.log(userToken)
+                        })
+                    } else alert(response.data.error)
                 })
                 .catch((error) => {
                     console.log(error)
