@@ -14,8 +14,8 @@
         border: none;
         font-size: 1.1rem;
         box-shadow: 2px 2px 25px rgba($color: $color-main, $alpha: 0.3);
-
         &:focus {
+            outline: none;
             box-shadow: 0 0 5px $color-second;
         }
     }

@@ -27,7 +27,7 @@ export default function PrivacyPolicy() {
                         </Link>
                     </div>
 
-                    <h1> Privacy Polity</h1>
+                    <h1 tabIndex="0"> Privacy Polity</h1>
 
                     <ol>
                         <li>

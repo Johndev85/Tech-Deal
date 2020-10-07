@@ -23,11 +23,18 @@
             list-style: inside;
             ul {
                 li {
-                    margin: 5px 0;
-                    cursor: pointer;
-                    &:hover {
-                        text-decoration: underline;
-                        font-weight: 700;
+                    padding: 3px 0;
+                    a {
+                        margin: 5px 0;
+                        padding: 10px 0;
+                        cursor: pointer;
+                        text-decoration: none;
+                        font-weight: 400;
+                        color: $color-second;
+                        &:hover {
+                            text-decoration: underline;
+                            font-weight: 700;
+                        }
                     }
                 }
             }
@@ -50,14 +57,16 @@
             }
             &__list {
                 li {
-                    display: flex;
-                    justify-content: flex-start;
-                    align-items: center;
-                    cursor: pointer;
-                    &:hover {
-                        span {
-                            text-decoration: underline;
-                            font-weight: 700;
+                    a {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        cursor: pointer;
+                        &:hover {
+                            span {
+                                text-decoration: underline;
+                                font-weight: 700;
+                            }
                         }
                     }
                 }

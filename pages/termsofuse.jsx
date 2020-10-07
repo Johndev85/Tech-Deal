@@ -25,7 +25,7 @@ export default function TermsofUse() {
                             <a>Back to Home</a>
                         </Link>
                     </div>
-                    <h1> Terms of Use</h1>
+                    <h1 tabIndex="0"> Terms of Use</h1>
 
                     <h1>Terms and conditions</h1>
 
