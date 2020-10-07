@@ -27,7 +27,7 @@ export default function AllStores() {
                         </Link>
                     </div>
 
-                    <h1> All stores</h1>
+                    <h1 tabIndex="0"> All stores</h1>
 
                     <ol>
                         <p>

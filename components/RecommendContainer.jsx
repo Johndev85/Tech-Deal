@@ -22,7 +22,7 @@ export default function RecommendedContainer() {
     return (
         <>
             <div className={styles.title}>
-                <h2>Recommended Products</h2>
+                <h2 tabIndex="0">Recommended Products</h2>
             </div>
             <section className={styles.container}>
                 {products.map((product, index) => {

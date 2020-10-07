@@ -86,7 +86,12 @@ export default function SignIn() {
                     }}
                 >
                     <Form className={styles.register__form}>
-                        <Field type="text" name="username" placeholder="Name" />
+                        <Field
+                            type="text"
+                            name="username"
+                            aria-label="name"
+                            placeholder="Name"
+                        />
                         <ErrorMessage
                             name="username"
                             component="span"
@@ -95,6 +100,7 @@ export default function SignIn() {
                         <Field
                             type="text"
                             name="lastname"
+                            aria-label="lastname"
                             placeholder="Last Name"
                         />
                         <ErrorMessage
@@ -103,7 +109,12 @@ export default function SignIn() {
                             className={styles.register__form__messageError}
                         />
 
-                        <Field type="email" name="email" placeholder="Email" />
+                        <Field
+                            type="email"
+                            name="email"
+                            aria-label="email"
+                            placeholder="Email"
+                        />
                         <ErrorMessage
                             name="email"
                             component="span"
@@ -113,6 +124,7 @@ export default function SignIn() {
                         <Field
                             type="password"
                             name="password"
+                            aria-label="password"
                             placeholder="Password"
                         />
                         <ErrorMessage
