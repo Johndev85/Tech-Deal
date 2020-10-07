@@ -41,7 +41,7 @@ export default function AllStores() {
                                 </a>
                             </p>
                             <p>
-                                Doto allows to .....
+                            Doto into their terms conditions, under the Article 148 "fracción IV de la Ley Federal del Derecho de Autor - MX", determinate that any use of DOTO eCommerce information is under that article. The 148 Mexican Article allows "reproduction parts of the work, for criticism and scientific, literary or artistic research", for that reason Tech Deal use as Educational purpose the Doto App information locate into their page.
                             </p>
                         </li>
                         <li>
@@ -51,7 +51,7 @@ export default function AllStores() {
                                 </a>
                             </p>
                             <p>
-                                Digitallife allows to .....
+                                Digitallife into their terms conditions, under the Article 148 "fracción IV de la Ley Federal del Derecho de Autor - MX", determinate that any use of DOTO eCommerce information is under that article. The 148 Mexican Article allows "reproduction parts of the work, for criticism and scientific, literary or artistic research", for that reason Tech Deal use as Educational purpose the Doto App information locate into their page.
                             </p>
                         </li>
                         <li>
@@ -61,7 +61,17 @@ export default function AllStores() {
                                </a> 
                             </p>
                             <p>
-                                Tecnowow allows to .....
+                                Tecnowow hasn´t into their restrictions anything about to Educational purpose to use their app products information, for that reason we use thier ecommerce.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                               <a href="https://pcel.com/">
+                                   <img src="https://images.pcel.com/static/data/pcel-logo.png" alt="PCEL ecommerce logo"/>
+                               </a> 
+                            </p>
+                            <p>
+                                PCEL hasn´t into their restrictions anything about to Educational purpose to use their app products information, for that reason we use thier ecommerce
                             </p>
                         </li>
                     </ol>
