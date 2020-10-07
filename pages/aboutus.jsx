@@ -14,27 +14,29 @@ export default function AboutUs() {
                 <title>About Us - Tech Deal</title>
             </Head>
             <Header />
-            <section className={styles.container}>
-                <div className={styles.container__left}>
-                    <FontAwesomeIcon
-                        icon={faArrowLeft}
-                        className={styles.container__left__icon}
-                    />
+            <section className={styles.main__container}>
+                <section className={styles.container}>
+                    <div className={styles.container__left}>
+                        <FontAwesomeIcon
+                            icon={faArrowLeft}
+                            className={styles.container__left__icon}
+                        />
 
-                    <Link href="/">
-                        <a>Back to Home</a>
-                    </Link>
-                </div>
+                        <Link href="/">
+                            <a>Back to Home</a>
+                        </Link>
+                    </div>
 
-                <h1> About us</h1>
+                    <h1> About us</h1>
 
-                <ol>
-                    <p>
-                        We compile and compare prices so anyone using TechDeal
-                        gets a better perspective while buying an electronic
-                        product.
-                    </p>
-                </ol>
+                    <ol>
+                        <p>
+                            We compile and compare prices so anyone using
+                            TechDeal gets a better perspective while buying an
+                            electronic product.
+                        </p>
+                    </ol>
+                </section>
             </section>
             <Footer />
         </>

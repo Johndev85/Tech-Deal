@@ -1,5 +1,12 @@
 @import "./variables";
 
+.main__container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .container {
     width: 800px;
     height: auto;
@@ -43,7 +50,7 @@
         padding: 8px;
         text-align: justify;
     }
-    img{
+    img {
         width: 50%;
         height: 30%;
     }

@@ -6,7 +6,7 @@ import * as Yup from "yup"
 import { Formik, Field, Form, ErrorMessage } from "formik"
 import { useState } from "react"
 import UserService from "../services/UsersService"
-// import {useRouter} from 'next/router'
+import { useRouter } from "next/router"
 import Head from "next/head"
 
 const formSchema = Yup.object().shape({
@@ -41,15 +41,13 @@ export default function SignIn() {
             setDataUser(values)
             UserService.register(dataUser)
                 .then((response) => {
-                    console.log(response)
                     if (
                         response.data.message === "User successfully registered"
                     ) {
                         alert("user created")
                         UserService.login(dataUser).then((response) => {
                             setUserToken(response.data.token)
-                            router.push("/usersigned")
-                            console.log(userToken)
+                            router.push("/")
                         })
                     } else alert(response.data.error)
                 })

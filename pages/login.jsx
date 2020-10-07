@@ -2,13 +2,11 @@ import styles from "../styles/register.module.scss"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Link from "next/link"
-import UserService from "../services/UsersService"
-import { useState } from "react"
-import jwt_decoded from "jwt-decode"
-import { useRouter } from "next/router"
+import useAthUser from "../hooks/useAuthUser"
 
 import * as Yup from "yup"
 import { Formik, Field, Form, ErrorMessage } from "formik"
+import { useState } from "react"
 
 const formSchema = Yup.object().shape({
     email: Yup.string()
@@ -20,41 +18,9 @@ const formSchema = Yup.object().shape({
 })
 
 export default function Login() {
-    const router = useRouter()
-    const [userToken, setUserToken] = useState(null)
-    const [tkDecoded, setTkDecoded] = useState(null)
-    const [isAuth, setIsAuth] = useState(false)
+    const [userLogin, setUserLogin] = useState("")
 
-    function authentication(login) {
-        UserService.login(login)
-            .then((response) => {
-                console.log(response)
-                if (response.data.token) {
-                    setUserToken(response.data.token)
-                    isLogged(userToken)
-                }
-            })
-            .catch((error) => {
-                console.log(error)
-            })
-    }
-
-    function isLogged(token) {
-        if (token !== null) {
-            const decoded = jwt_decoded(token)
-            if (decoded) {
-                setTkDecoded(decoded)
-                setIsAuth(true)
-                alert("Login Sucess")
-                // router.push("/usersigned")
-                console.log(isAuth)
-                console.log(tkDecoded)
-            }
-        } else {
-            alert("No such user found")
-            console.log("No such user found")
-        }
-    }
+    useAthUser(userLogin)
 
     return (
         <>
@@ -74,8 +40,7 @@ export default function Login() {
                     }}
                     validationSchema={formSchema}
                     onSubmit={(values) => {
-                        console.log(values)
-                        authentication(values)
+                        setUserLogin(values)
                     }}
                 >
                     <Form className={styles.register__form}>
