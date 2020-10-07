@@ -24,7 +24,6 @@ export default function Header() {
                     alt="logo-tech-deal"
                 />
             </Link>
-            <UserMenu />
         </header>
     )
 }
