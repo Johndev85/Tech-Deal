@@ -5,8 +5,8 @@
     justify-content: space-around;
     align-items: center;
     &__logo {
-        width: 180px;
-        height: 180px;
+        width: 16rem;
+        height: 16rem;
         cursor: pointer;
     }
     &__menu {
@@ -39,11 +39,20 @@
 
 /*-------------  Mobile -------------------*/
 
+@media screen and (max-width: 768px) {
+    .header {
+        &__logo {
+            width: 15rem;
+            height: 15rem;
+        }
+    }
+}
+
 @media screen and (max-width: 414px) {
     .header {
         &__logo {
-            width: 180px;
-            height: 180px;
+            width: 11rem;
+            height: 11rem;
         }
         &__menu {
             a {

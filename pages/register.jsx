@@ -1,13 +1,13 @@
 import styles from "../styles/register.module.scss"
-import Header from "../components/HeaderNotRegister"
+import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Link from "next/link"
 import * as Yup from "yup"
 import { Formik, Field, Form, ErrorMessage } from "formik"
 import { useState } from "react"
 import UserService from "../services/UsersService"
-// import {useRouter} from 'next/router'
-
+import { useRouter } from "next/router"
+import Head from "next/head"
 
 const formSchema = Yup.object().shape({
     username: Yup.string()
@@ -31,30 +31,39 @@ export default function SignIn() {
         name: "",
         lastname: "",
     }
+    const router = useRouter()
     const [dataUser, setDataUser] = useState(initialDataUserState)
-    // const [submitted, setSubmitted] = useState(false)
+    const [userToken, setUserToken] = useState(null)
 
     function register(values) {
-        const isChecked = document.getElementById("cbox1")
-            .checked
+        const isChecked = document.getElementById("cbox1").checked
         if (isChecked) {
             setDataUser(values)
             UserService.register(dataUser)
                 .then((response) => {
-                    // setSubmitted(true)
+                    if (
+                        response.data.message === "User successfully registered"
+                    ) {
+                        alert("user created")
+                        UserService.login(dataUser).then((response) => {
+                            setUserToken(response.data.token)
+                            router.push("/")
+                        })
+                    } else alert(response.data.error)
                 })
                 .catch((error) => {
                     console.log(error)
                 })
         } else {
-            alert('It is required to accept the terms of use')
+            alert("It is required to accept the terms of use")
         }
     }
 
-
-
     return (
         <>
+            <Head>
+                <title>Register - Tech Deal</title>
+            </Head>
             <Header />
             <section className={styles.register}>
                 <h1>Register Now</h1>
@@ -77,7 +86,12 @@ export default function SignIn() {
                     }}
                 >
                     <Form className={styles.register__form}>
-                        <Field type="text" name="username" placeholder="Name" />
+                        <Field
+                            type="text"
+                            name="username"
+                            aria-label="name"
+                            placeholder="Name"
+                        />
                         <ErrorMessage
                             name="username"
                             component="span"
@@ -86,6 +100,7 @@ export default function SignIn() {
                         <Field
                             type="text"
                             name="lastname"
+                            aria-label="lastname"
                             placeholder="Last Name"
                         />
                         <ErrorMessage
@@ -94,7 +109,12 @@ export default function SignIn() {
                             className={styles.register__form__messageError}
                         />
 
-                        <Field type="email" name="email" placeholder="Email" />
+                        <Field
+                            type="email"
+                            name="email"
+                            aria-label="email"
+                            placeholder="Email"
+                        />
                         <ErrorMessage
                             name="email"
                             component="span"
@@ -104,6 +124,7 @@ export default function SignIn() {
                         <Field
                             type="password"
                             name="password"
+                            aria-label="password"
                             placeholder="Password"
                         />
                         <ErrorMessage
@@ -116,17 +137,14 @@ export default function SignIn() {
                             <label>
                                 <input type="checkbox" id="cbox1" />
                                 <small>
-                                    I have read the 
-                                    <span>Privacy Policy</span> 
+                                    I have read the
+                                    <span>Privacy Policy</span>
                                     and
-                                    
                                     <span>Terms of Use.</span>
-                                   
                                 </small>
                             </label>
                         </div>
                         <button type="submit">Create Account</button>
-
                     </Form>
                 </Formik>
 
