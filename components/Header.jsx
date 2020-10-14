@@ -6,14 +6,7 @@ import useAuthUser from "../hooks/useAuthUser"
 import UserContext from "../context/UserContext"
 
 export default function Header() {
-    const userLogin = useAuthUser
-
-    function UserMenu(userLogin) {
-        if (userLogin.auth) {
-            return <MenuSignIn />
-        }
-        return <MenuSignOut />
-    }
+    const userLogin = useAuthUser()
 
     return (
         <header className={styles.header}>
@@ -24,6 +17,7 @@ export default function Header() {
                     alt="logo-tech-deal"
                 />
             </Link>
+            {userLogin.auth ? <MenuSignIn /> : <MenuSignOut />}
         </header>
     )
 }
