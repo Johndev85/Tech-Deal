@@ -2,7 +2,6 @@ import { useRouter } from "next/router"
 import UserService from "../services/UsersService"
 import { useState, useEffect } from "react"
 import jwt_decode from "jwt-decode"
-import UserContext from "../context/UserContext"
 
 export default function useAthUser(login) {
     const router = useRouter()

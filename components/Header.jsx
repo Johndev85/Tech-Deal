@@ -3,7 +3,6 @@ import MenuSignIn from "../components/MenuSignIn"
 import MenuSignOut from "../components/MenuSignOut"
 import Link from "next/link"
 import useAuthUser from "../hooks/useAuthUser"
-import UserContext from "../context/UserContext"
 
 export default function Header() {
     const userLogin = useAuthUser()
