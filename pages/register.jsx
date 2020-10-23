@@ -33,7 +33,7 @@ export default function SignIn() {
     }
     const router = useRouter()
     const [dataUser, setDataUser] = useState(initialDataUserState)
-    const [userToken, setUserToken] = useState(null)
+    // const [userToken, setUserToken] = useState(null)
 
     function register(values) {
         const isChecked = document.getElementById("cbox1").checked
@@ -46,7 +46,7 @@ export default function SignIn() {
                     ) {
                         alert("user created")
                         UserService.login(dataUser).then((response) => {
-                            setUserToken(response.data.token)
+                            // setUserToken(response.data.token)
                             router.push("/")
                         })
                     } else alert(response.data.error)

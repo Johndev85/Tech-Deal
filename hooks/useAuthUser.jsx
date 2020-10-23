@@ -1,7 +1,7 @@
 import { useRouter } from "next/router"
 import UserService from "../services/UsersService"
-import { useState, useEffect } from "react"
-import jwt_decode from "jwt-decode"
+import { useState, useEffect, useCallback } from "react"
+import jwtDecode from "jwt-decode"
 
 export default function useAthUser(login) {
     const router = useRouter()
@@ -24,18 +24,26 @@ export default function useAthUser(login) {
 
     function isLogged(token) {
         if (token !== null) {
-            const decoded = jwt_decode(token)
+            const decoded = jwtDecode(token)
+            console.log(token)
             if (decoded) {
                 setTkDecoded(decoded)
                 setIsAuth(true)
                 alert("Login Sucess")
+                window.sessionStorage.setItem("jwt", token)
                 router.push("/")
             }
         } else {
+            window.sessionStorage.removeItem("jwt")
             alert("No such user found")
-            console.log("No such user found")
         }
     }
 
-    return { auth: isAuth, tk: tkDecoded }
+    function logout() {
+        window.sessionStorage.removeItem("jwt")
+        setUserToken(null)
+        setTkDecoded(null)
+        setIsAuth(false)
+    }
+    return { auth: isAuth, tk: tkDecoded, logoout: logout }
 }
