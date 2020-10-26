@@ -1,17 +1,21 @@
-import React, { useState } from "react"
-import useAuthUser from "../hooks/useAuthUser"
+import React, { useContext, useState } from "react"
 
-const Context = React.createContext({})
+const UserContext = React.createContext({
+    userAuth: null,
+    userToken: null,
+})
+
+export const useUserContext = () => useContext(UserContext)
 
 export function UserContextProvider({ children }) {
-    const [jwt, setJWT] = useState(() => window.sessionStorage.getItem("jwt"))
-    const { auth, tk, logout } = useAuthUser()
+    const [userAuth, setAuth] = useState(false)
+    const [userToken, setToken] = useState(null)
 
     return (
-        <Context.Provider value={{ jwt, setJWT, auth, tk, logout }}>
+        <UserContext.Provider
+            value={{ userAuth, userToken, setAuth, setToken }}
+        >
             {children}
-        </Context.Provider>
+        </UserContext.Provider>
     )
 }
-
-export default Context
