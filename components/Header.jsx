@@ -2,18 +2,10 @@ import styles from "../components/styles/header.module.scss"
 import MenuSignIn from "../components/MenuSignIn"
 import MenuSignOut from "../components/MenuSignOut"
 import Link from "next/link"
-import useAuthUser from "../hooks/useAuthUser"
-import UserContext from "../context/UserContext"
+import { useUserContext } from "../context/UserContext"
 
 export default function Header() {
-    const userLogin = useAuthUser
-
-    function UserMenu(userLogin) {
-        if (userLogin.auth) {
-            return <MenuSignIn />
-        }
-        return <MenuSignOut />
-    }
+    const { userAuth, userToken } = useUserContext()
 
     return (
         <header className={styles.header}>
@@ -24,6 +16,7 @@ export default function Header() {
                     alt="logo-tech-deal"
                 />
             </Link>
+            {userAuth ? <MenuSignIn /> : <MenuSignOut />}
         </header>
     )
 }

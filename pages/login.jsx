@@ -18,7 +18,7 @@ const formSchema = Yup.object().shape({
 })
 
 export default function Login() {
-    const [userLogin, setUserLogin] = useState("")
+    const [userLogin, setUserLogin] = useState(null)
 
     useAthUser(userLogin)
 

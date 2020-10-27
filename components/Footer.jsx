@@ -87,16 +87,6 @@ export default function Footer() {
                         </li>
                     </ul>
                 </div>
-                <script
-                    defer
-                    id="io.birdseed.script-tag"
-                    type="text/javascript"
-                    src="https://cdn.birdseed.io/widget.js"
-                ></script>
-                <div
-                    id="birdseed-widget-container"
-                    data-token="e5ea8448c4478f906ab6e063cab3ef17"
-                ></div>
             </section>
             <div className={styles.footer__bottom}>
                 <span>Tech Deal -2020</span>

@@ -1,21 +1,23 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 
-const UserContext = React.createContext({})
+const UserContext = React.createContext({
+    userAuth: null,
+    userToken: null,
+    setAuth: {},
+    setToken: {},
+})
 
-const Provider = ({ children }) => {
-    const [isAuth, setIsAuth] = useState(false)
+export const useUserContext = () => useContext(UserContext)
 
-    const value = {
-        isAuth,
-        activateAuth: () => {
-            setIsAuth(true)
-        },
-    }
+export function UserContextProvider({ children }) {
+    const [userAuth, setAuth] = useState(false)
+    const [userToken, setToken] = useState(null)
 
-    return <UserContext.Provider value={value}>{children}</UserContext.Provider>
-}
-
-export default {
-    Provider,
-    Consumer: UserContext.Consumer,
+    return (
+        <UserContext.Provider
+            value={{ userAuth, userToken, setAuth, setToken }}
+        >
+            {children}
+        </UserContext.Provider>
+    )
 }
