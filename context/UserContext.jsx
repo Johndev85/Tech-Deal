@@ -3,6 +3,8 @@ import React, { useContext, useState } from "react"
 const UserContext = React.createContext({
     userAuth: null,
     userToken: null,
+    setAuth: {},
+    setToken: {},
 })
 
 export const useUserContext = () => useContext(UserContext)

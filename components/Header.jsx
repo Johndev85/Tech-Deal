@@ -5,7 +5,8 @@ import Link from "next/link"
 import { useUserContext } from "../context/UserContext"
 
 export default function Header() {
-    const { userAuth } = useUserContext()
+    const { userAuth, userToken } = useUserContext()
+
     return (
         <header className={styles.header}>
             <Link href="/">

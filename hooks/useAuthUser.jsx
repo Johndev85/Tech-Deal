@@ -1,21 +1,20 @@
 import { useRouter } from "next/router"
 import UserService from "../services/UsersService"
 import { useState, useEffect } from "react"
-import jwtDecode from "jwt-decode"
 import AuthService from "../services/AuthService"
+import { useUserContext } from "../context/UserContext"
 
 export default function useAthUser(login) {
     const router = useRouter()
-    const [userToken, setUserTk] = useState(null)
-    const [tkDecoded, setTkDecoded] = useState(null)
-    const [isAuth, setIsAuth] = useState(false)
+    const [userTk, setUserTk] = useState(null)
+    const { setAuth, setToken } = useUserContext()
 
     useEffect(() => {
         UserService.login(login)
             .then((response) => {
-                if (response.status === 200) {
+                if (response.status === 200 && response.data.token) {
                     setUserTk(response.data.token)
-                    isLogged(userToken)
+                    isLogged(userTk)
                 }
             })
             .catch((error) => {
@@ -25,24 +24,14 @@ export default function useAthUser(login) {
 
     function isLogged(token) {
         if (token !== null) {
-            const decoded = jwtDecode(token)
             console.log(token)
-            setTkDecoded(decoded)
-            setIsAuth(true)
-            AuthService.login(userToken)
+            setAuth(true)
+            setToken(token)
+            AuthService.login(token)
             alert("Login Sucess")
             router.push("/")
         } else {
-            window.sessionStorage.removeItem("jwt")
             alert("No such user found")
         }
     }
-
-    // function logout() {
-    //     window.sessionStorage.removeItem("jwt")
-    //     setUserToken(null)
-    //     setTkDecoded(null)
-    //     setIsAuth(false)
-    // }
-    return { auth: isAuth, tk: tkDecoded }
 }

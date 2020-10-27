@@ -1,9 +1,19 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
+import { useUserContext } from "../context/UserContext"
+import AuthService from "../services/AuthService"
 
 import styles from "../components/styles/header.module.scss"
 
 export default function MenuSignIn() {
+    const { setAuth, setToken } = useUserContext()
+
+    const logout = () => {
+        AuthService.logout()
+        setToken(null)
+        setAuth(false)
+    }
+
     const {
         query: { id },
     } = useRouter()
@@ -20,7 +30,7 @@ export default function MenuSignIn() {
                 <a>User</a>
             </Link>
 
-            <button>Logout</button>
+            <button onClick={logout}>Logout</button>
         </nav>
     )
 }
